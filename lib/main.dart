@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mourinavent/core/theme/theme.dart';
-import 'package:mourinavent/features/auth/presentation/screens/signup_sreen.dart';
+import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
+import 'package:mourinavent/features/auth/presentation/screens/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
       title: "Mourinavent",
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightThemeMode,
-      home: const SignupSreen(),
+      home: const SigninScreen(),
     );
   }
 }

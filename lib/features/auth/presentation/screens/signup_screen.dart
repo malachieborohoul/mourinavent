@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:mourinavent/core/common/widgets/custom_button.dart';
 import 'package:mourinavent/core/contants/padding.dart';
 import 'package:mourinavent/core/theme/app_palette.dart';
+import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
 import 'package:mourinavent/features/auth/presentation/widgets/auth_field.dart';
 import 'package:mourinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SignupSreen extends StatefulWidget {
+    static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
+        return FadeTransition(
+          opacity: animation,
+          child: const SignupSreen(),
+        );
+      });
   const SignupSreen({super.key});
 
   @override
@@ -122,18 +129,24 @@ class _SignupSreenState extends State<SignupSreen> {
                     height: AppPadding.miniSpacer,
                   ),
                   
-                  RichText(
-                          text: TextSpan(
-                              text: "Already have an account? ",
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.black),
-                              children: [
-                            TextSpan(
-                              text: "Sign In",
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: AppPalette.gradient1,
-                                  decoration: TextDecoration.underline),
-                            )
-                          ]))
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, SigninScreen.route());
+
+                    },
+                    child: RichText(
+                            text: TextSpan(
+                                text: "Already have an account? ",
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.black),
+                                children: [
+                              TextSpan(
+                                text: "Sign In",
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: AppPalette.gradient1,
+                                    decoration: TextDecoration.underline),
+                              )
+                            ])),
+                  )
                 ],
               ),
             ),
