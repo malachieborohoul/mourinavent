@@ -21,6 +21,7 @@ class SigninScreen extends StatefulWidget {
 
 class _SigninScreenState extends State<SigninScreen> {
   TextEditingController nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -58,6 +59,9 @@ class _SigninScreenState extends State<SigninScreen> {
                     hintText: "example@gmail.com",
                     controller: nameController,
                     title: 'Email',
+                    textInputType: TextInputType.emailAddress,
+                    codeKey: 2,
+
                   ),
                   const SizedBox(
                     height: AppPadding.miniSpacer,
@@ -66,6 +70,11 @@ class _SigninScreenState extends State<SigninScreen> {
                     hintText: "***************",
                     controller: nameController,
                     title: 'Password',
+                    isPassword: true,
+                    textInputType: TextInputType.visiblePassword,
+                    codeKey: 3,
+
+
                   ),
                   const SizedBox(
                     height: AppPadding.miniSpacer,
