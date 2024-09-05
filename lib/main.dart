@@ -3,7 +3,9 @@ import 'package:mourinavent/core/theme/theme.dart';
 import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
 import 'package:mourinavent/features/auth/presentation/screens/signup_screen.dart';
 
-void main() {
+void main()async  {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
