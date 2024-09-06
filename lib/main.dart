@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mourinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:mourinavent/core/theme/theme.dart';
 import 'package:mourinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
+import 'package:mourinavent/features/auth/presentation/screens/splash_screen.dart';
 import 'package:mourinavent/init_dependencies.dart';
 
 void main() async {
@@ -19,19 +19,9 @@ void main() async {
   ));
 }
 
-class MyApp extends StatefulWidget {
+
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    context.read<AuthBloc>().add(AuthIsUserLoggedIn());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +29,7 @@ class _MyAppState extends State<MyApp> {
       title: "Mourinavent",
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightThemeMode,
-      home: BlocSelector<AppUserCubit, AppUserState, bool>(
-        selector: (state) {
-          return state is AppUserLoggedIn;
-        },
-        builder: (context, isLoggeIn) {
-          if (isLoggeIn) {
-            return const Scaffold(
-              body: Text("Home"),
-            );
-          }
-          return const SigninScreen();
-        },
-      ),
+      home: const SplashScreen(), // Affiche d'abord le Splash Screen
     );
   }
 }

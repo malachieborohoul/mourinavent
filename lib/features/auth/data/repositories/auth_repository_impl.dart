@@ -4,7 +4,6 @@ import 'package:mourinavent/core/error/failures.dart';
 import 'package:mourinavent/core/utils/typedef.dart';
 import 'package:mourinavent/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:mourinavent/features/auth/data/models/user_model.dart';
-import 'package:mourinavent/core/common/entities/user.dart';
 import 'package:mourinavent/features/auth/domain/repositories/auth_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
