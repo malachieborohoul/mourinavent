@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mourinavent/core/common/widgets/custom_button.dart';
-import 'package:mourinavent/core/common/widgets/loader.dart';
 import 'package:mourinavent/core/contants/padding.dart';
-import 'package:mourinavent/core/error/failures.dart';
 import 'package:mourinavent/core/theme/app_palette.dart';
 import 'package:mourinavent/core/utils/loader_dialog.dart';
 import 'package:mourinavent/core/utils/show_snackbar.dart';
@@ -54,14 +52,12 @@ class _SignupSreenState extends State<SignupSreen> {
                     showLoaderDialog(context);
                   } else {
                     closeLoaderDialog(context);
-                    if(state is AuthFailure){
-                    showSnackBar(context, state.message);
-          
+                    if (state is AuthFailure) {
+                      showSnackBar(context, state.message);
                     }
                   }
                 },
                 builder: (context, state) {
-                  
                   return Form(
                     key: _signUpFormKey,
                     child: Column(
@@ -129,9 +125,8 @@ class _SignupSreenState extends State<SignupSreen> {
                             RichText(
                                 text: TextSpan(
                                     text: "Agree with ",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall,
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
                                     children: [
                                   TextSpan(
                                     text: "Terms & Conditions",
@@ -153,10 +148,11 @@ class _SignupSreenState extends State<SignupSreen> {
                             buttonText: "Sign Up",
                             onPressed: () {
                               if (_signUpFormKey.currentState!.validate()) {
+    FocusScope.of(context).unfocus();
+
                                 context.read<AuthBloc>().add(AuthSignUp(
                                     email: emailController.text.trim(),
-                                    password:
-                                        passwordController.text.trim(),
+                                    password: passwordController.text.trim(),
                                     name: nameController.text.trim()));
                               }
                             }),
@@ -202,8 +198,7 @@ class _SignupSreenState extends State<SignupSreen> {
                                       .bodySmall
                                       ?.copyWith(
                                           color: AppPalette.gradient1,
-                                          decoration:
-                                              TextDecoration.underline),
+                                          decoration: TextDecoration.underline),
                                 )
                               ])),
                         )

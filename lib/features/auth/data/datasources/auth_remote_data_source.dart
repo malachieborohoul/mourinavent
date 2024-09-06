@@ -14,20 +14,33 @@ abstract interface class AuthRemoteDataSource {
     required String email,
     required String password,
   });
+
+  Future<UserModel?> getCurrentUserData();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  @override
   final SupabaseClient supabaseClient;
 
   AuthRemoteDataSourceImpl(this.supabaseClient);
-  // TODO: implement currentUserSession
-  Session? get currentUserSession => throw UnimplementedError();
+  @override
+  Session? get currentUserSession => supabaseClient.auth.currentSession;
 
   @override
-  Future<UserModel> signIn({required String email, required String password}) {
-    // TODO: implement signIn
-    throw UnimplementedError();
+  Future<UserModel> signIn({required String email, required String password}) async{
+    try {
+      final response = await supabaseClient.auth.signInWithPassword(
+        password: password,
+        email: email,
+      );
+      if (response.user == null) {
+        throw const ServerException('User is null');
+      }
+      return UserModel.fromMap(response.user!.toJson());
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 
   @override
@@ -47,6 +60,25 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       return UserModel.fromMap(response.user!.toJson());
     } on AuthException catch (e) {
       throw ServerException(e.message);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+  
+  @override
+  Future<UserModel?> getCurrentUserData() async{
+      try {
+      if (currentUserSession != null) {
+        final userData = await supabaseClient
+            .from('profiles')
+            .select()
+            .eq('id', currentUserSession!.user.id);
+        return UserModel.fromMap(userData.first).copyWith(
+          email: currentUserSession!.user.email
+        );
+      }
+
+      return null;
     } catch (e) {
       throw ServerException(e.toString());
     }

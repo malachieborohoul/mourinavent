@@ -1,5 +1,5 @@
 import 'package:mourinavent/core/utils/typedef.dart';
-import 'package:mourinavent/features/auth/domain/entities/user.dart';
+import 'package:mourinavent/core/common/entities/user.dart';
 
 abstract interface class AuthRepository {
   ResultFuture<User> signUp({
@@ -12,4 +12,6 @@ abstract interface class AuthRepository {
     required String email,
     required String password,
   });
+
+  ResultFuture<User> currentUser();
 }

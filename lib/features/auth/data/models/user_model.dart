@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:mourinavent/features/auth/domain/entities/user.dart';
+import 'package:mourinavent/core/common/entities/user.dart';
 
 
 class UserModel extends User {

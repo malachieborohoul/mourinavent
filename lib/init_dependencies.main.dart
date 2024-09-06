@@ -10,6 +10,11 @@ Future<void> initDependencies() async {
   );
 
   serviceLocator.registerLazySingleton(() => supabase.client);
+
+  //core
+   serviceLocator.registerLazySingleton(
+    () => AppUserCubit(),
+  );
 }
 
 void _initAuth() {
@@ -35,11 +40,22 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+      () => UserSignIn(
+        serviceLocator(),
+      ),
+    )
+
+    ..registerFactory(
+      () => CurrentUser(
+        serviceLocator(),
+      ),
+    )
+
 
     //Bloc
     ..registerLazySingleton(
-      () => AuthBloc(
-        userSignUp: serviceLocator(),
-      ),
+      () =>
+          AuthBloc(userSignUp: serviceLocator(), userSignIn: serviceLocator(), currentUser: serviceLocator(), appUserCubit: serviceLocator()),
     );
 }

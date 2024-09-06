@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:mourinavent/core/usecase/usecase.dart';
 import 'package:mourinavent/core/utils/typedef.dart';
-import 'package:mourinavent/features/auth/domain/entities/user.dart';
+import 'package:mourinavent/core/common/entities/user.dart';
 import 'package:mourinavent/features/auth/domain/repositories/auth_repository.dart';
 
 class UserSignUp implements Usecase<User, UserSignUpParams> {
