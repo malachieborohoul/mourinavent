@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mourinavent/core/contants/constants.dart';
@@ -6,7 +5,8 @@ import 'package:mourinavent/core/theme/app_palette.dart';
 
 class CustomButtonSocial extends StatelessWidget {
   final String svgIcon;
-  const CustomButtonSocial({super.key, required this.svgIcon});
+  final VoidCallback onPressed;
+  const CustomButtonSocial({super.key, required this.svgIcon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,17 @@ class CustomButtonSocial extends StatelessWidget {
           color: AppPalette.backgroundColor,
           borderRadius: BorderRadius.circular(size),
           border: Border.all(color: AppPalette.borderColor, width: 1)),
-      child: SvgPicture.asset(
-        Constants.assetImg + svgIcon,
-        fit: BoxFit.none,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppPalette.transparentColor,
+          shadowColor: AppPalette.transparentColor,
+          padding: EdgeInsets.zero,
+        ),
+        onPressed: onPressed,
+        child: SvgPicture.asset(
+          Constants.assetImg + svgIcon,
+          fit: BoxFit.none,
+        ),
       ),
     );
   }

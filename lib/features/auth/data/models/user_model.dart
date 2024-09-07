@@ -4,7 +4,7 @@ import 'package:mourinavent/core/common/entities/user.dart';
 
 
 class UserModel extends User {
-  UserModel({required super.id, required super.email, required super.name, });
+  UserModel( {required super.id, required super.email, required super.name, required super.updatedAt, });
   
   
   
@@ -13,6 +13,7 @@ class UserModel extends User {
       'id': id,
       'name': name,
       'email': email,
+      'updated_at': updatedAt.toIso8601String(),
     };
   }
 
@@ -21,6 +22,9 @@ class UserModel extends User {
       id: map['id'] ?? '' ,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
+      updatedAt: map['updated_at'] == null
+          ? DateTime.now()
+          : DateTime.parse(map['updated_at']),
     );
   }
 
@@ -33,11 +37,13 @@ class UserModel extends User {
     String? id,
     String? name,
     String? email,
+     DateTime? updatedAt,
   }) {
     return UserModel(
       id: id ?? this.id,
       name: name ?? this.name,
-      email: email ?? this.email,
+      email: email ?? this.email, 
+      updatedAt:updatedAt ?? this.updatedAt,
     );
   }
 }

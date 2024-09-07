@@ -170,18 +170,24 @@ class _SignupSreenState extends State<SignupSreen> {
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
-                         Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const CustomButtonSocial(svgIcon: 'apple_logo.svg'),
+                            CustomButtonSocial(
+                              svgIcon: 'apple_logo.svg',
+                              onPressed: () {},
+                            ),
                             const SizedBox(
                               width: AppPadding.miniSpacer,
                             ),
-                            InkWell(
-                              onLongPress: () {
-                                
+                            CustomButtonSocial(
+                              svgIcon: 'google_logo.svg',
+                              onPressed: () {
+                                context
+                                    .read<AuthBloc>()
+                                    .add(AuthSignUpWithGoogle());
                               },
-                              child: const CustomButtonSocial(svgIcon: 'google_logo.svg')),
+                            ),
                           ],
                         ),
                         const SizedBox(
