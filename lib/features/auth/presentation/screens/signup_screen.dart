@@ -7,6 +7,7 @@ import 'package:mourinavent/core/utils/loader_dialog.dart';
 import 'package:mourinavent/core/utils/show_snackbar.dart';
 import 'package:mourinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
+import 'package:mourinavent/features/auth/presentation/screens/test.dart';
 import 'package:mourinavent/features/auth/presentation/widgets/auth_field.dart';
 import 'package:mourinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
@@ -54,6 +55,9 @@ class _SignupSreenState extends State<SignupSreen> {
                     closeLoaderDialog(context);
                     if (state is AuthFailure) {
                       showSnackBar(context, state.message);
+                    } else if (state is AuthSuccess) {
+                      Navigator.pushAndRemoveUntil(
+                          context, Test.route(), (route) => false);
                     }
                   }
                 },
@@ -148,7 +152,7 @@ class _SignupSreenState extends State<SignupSreen> {
                             buttonText: "Sign Up",
                             onPressed: () {
                               if (_signUpFormKey.currentState!.validate()) {
-    FocusScope.of(context).unfocus();
+                                FocusScope.of(context).unfocus();
 
                                 context.read<AuthBloc>().add(AuthSignUp(
                                     email: emailController.text.trim(),
@@ -166,14 +170,18 @@ class _SignupSreenState extends State<SignupSreen> {
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
-                        const Row(
+                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomButtonSocial(svgIcon: 'apple_logo.svg'),
-                            SizedBox(
+                            const CustomButtonSocial(svgIcon: 'apple_logo.svg'),
+                            const SizedBox(
                               width: AppPadding.miniSpacer,
                             ),
-                            CustomButtonSocial(svgIcon: 'google_logo.svg'),
+                            InkWell(
+                              onLongPress: () {
+                                
+                              },
+                              child: const CustomButtonSocial(svgIcon: 'google_logo.svg')),
                           ],
                         ),
                         const SizedBox(

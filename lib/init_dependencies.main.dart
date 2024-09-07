@@ -11,8 +11,10 @@ Future<void> initDependencies() async {
 
   serviceLocator.registerLazySingleton(() => supabase.client);
 
+  serviceLocator.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn());
+
   //core
-   serviceLocator.registerLazySingleton(
+  serviceLocator.registerLazySingleton(
     () => AppUserCubit(),
   );
 }
@@ -31,10 +33,16 @@ void _initAuth() {
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
         serviceLocator(),
+        serviceLocator(),
       ),
     )
 
     //Usecases
+    ..registerFactory(
+      () => SignUpWithGoogle(
+        serviceLocator(),
+      ),
+    )
     ..registerFactory(
       () => UserSignUp(
         serviceLocator(),
@@ -45,17 +53,19 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
-
     ..registerFactory(
       () => CurrentUser(
         serviceLocator(),
       ),
     )
 
-
     //Bloc
     ..registerLazySingleton(
-      () =>
-          AuthBloc(userSignUp: serviceLocator(), userSignIn: serviceLocator(), currentUser: serviceLocator(), appUserCubit: serviceLocator()),
+      () => AuthBloc(
+          userSignUp: serviceLocator(),
+          userSignIn: serviceLocator(),
+          currentUser: serviceLocator(),
+          appUserCubit: serviceLocator(),
+          signUpWithGoogle: serviceLocator()),
     );
 }
