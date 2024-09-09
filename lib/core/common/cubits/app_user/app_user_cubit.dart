@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mourinavent/core/common/entities/user.dart';
+import 'package:rinavent/core/common/entities/user.dart';
 
 part 'app_user_state.dart';
 

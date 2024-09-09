@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mourinavent/core/contants/constants.dart';
-import 'package:mourinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/contants/constants.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
 
 class CustomButtonSocial extends StatelessWidget {
   final String svgIcon;

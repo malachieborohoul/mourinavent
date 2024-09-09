@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mourinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
 
 class AppTheme {
   static _border([Color color = AppPalette.borderColor]) => OutlineInputBorder(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mourinavent/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:mourinavent/core/theme/theme.dart';
-import 'package:mourinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:mourinavent/features/auth/presentation/screens/splash_screen.dart';
-import 'package:mourinavent/init_dependencies.dart';
+import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:rinavent/core/theme/theme.dart';
+import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/auth/presentation/screens/splash_screen.dart';
+import 'package:rinavent/init_dependencies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Mourinavent",
+      title: "rinavent",
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightThemeMode,
       home: const SplashScreen(), // Affiche d'abord le Splash Screen

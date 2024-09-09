@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mourinavent/core/error/exceptions.dart';
-import 'package:mourinavent/features/auth/data/models/user_model.dart';
+import 'package:rinavent/core/error/exceptions.dart';
+import 'package:rinavent/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 abstract interface class AuthRemoteDataSource {
   Session? get currentUserSession;
@@ -13,6 +15,7 @@ abstract interface class AuthRemoteDataSource {
   });
 
   Future<UserModel> signUpWithGoogle();
+  Future<UserModel> signUpWithApple();
   Future<UserModel> signIn({
     required String email,
     required String password,
@@ -37,7 +40,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
         email: email,
       );
-final user = response.user;
+      final user = response.user;
 
       if (user == null) {
         throw const ServerException('User is null');
@@ -56,14 +59,28 @@ final user = response.user;
       required String email,
       required String password}) async {
     try {
+      if (kDebugMode) {
+        print('Tentative d\'inscription...');
+      }
       final response = await supabaseClient.auth
           .signUp(password: password, email: email, data: {
         'name': name,
       });
-final user = response.user;
+      final user = response.user;
       if (user == null) {
         throw const ServerException('User is null');
       }
+
+      // Vérify user identities exists
+      if (user.identities != null && user.identities!.isEmpty) {
+        throw const ServerException('Email already exists');
+      }
+
+      // identities exist Confirm email
+      if (user.identities != null && user.identities!.isNotEmpty) {
+        throw const ServerException('Confirm email');
+      }
+
       return UserModel.fromMap(user.toJson());
     } on AuthException catch (e) {
       throw ServerException(e.message);
@@ -75,30 +92,71 @@ final user = response.user;
   @override
   Future<UserModel> signUpWithGoogle() async {
     try {
-    
-   // Étape 1: Authentification via Google
-    final googleUser = await googleSignIn.signIn();
-    if (googleUser == null) {
-      throw const ServerException("Failed to sign in with Google.");
+      // Étape 1: Authentification via Google
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        throw const ServerException("Failed to sign in with Google.");
+      }
+      final googleAuth = await googleUser.authentication;
+
+      // Étape 2: Utilisation de Supabase pour l'authentification avec Google ID token
+      final response = await supabaseClient.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: googleAuth.idToken!,
+      );
+
+      final user = response.user;
+
+      if (user == null) {
+        //Failed to get user from Supabase.
+        throw const ServerException("User is null");
+      }
+
+      // // identities exist Confirm email
+      // if (user.identities != null && user.identities!.isNotEmpty) {
+      //   throw const ServerException('Confirm email');
+      // }
+
+      // Retourne le modèle utilisateur
+      return UserModel.fromMap(user.toJson());
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
+    } catch (e) {
+      throw ServerException(e.toString());
     }
-    final googleAuth = await googleUser.authentication;
+  }
 
-    // Étape 2: Utilisation de Supabase pour l'authentification avec Google ID token
-    final response = await supabaseClient.auth.signInWithIdToken(
-      provider: OAuthProvider.google,
-      idToken: googleAuth.idToken!,
-    );
-    
-    final user = response.user;
+  @override
+  Future<UserModel> signUpWithApple() async {
+    try {
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName
+        ],
+      );
 
-    if (user == null) {
-      //Failed to get user from Supabase.
-      throw const ServerException("User is null");
-    }
+      final idToken = appleCredential.identityToken;
+      // final accessToken = appleCredential.authorizationCode;
 
+      if (idToken == null) {
+        throw const ServerException('No ID Token found.');
+      }
 
-    // Retourne le modèle utilisateur
-    return UserModel.fromMap(user.toJson());
+      // Étape 2: Utiliser Supabase pour s'authentifier avec le token d'Apple
+      final response = await supabaseClient.auth.signInWithIdToken(
+        provider: OAuthProvider.apple,
+        idToken: idToken,
+        // accessToken: accessToken,
+      );
+
+      final user = response.user;
+
+      if (user == null) {
+        throw const ServerException('Failed to get user from Supabase.');
+      }
+
+      return UserModel.fromMap(user.toJson());
     } on AuthException catch (e) {
       throw ServerException(e.message);
     } catch (e) {

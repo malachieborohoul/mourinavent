@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mourinavent/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:mourinavent/core/common/entities/user.dart';
-import 'package:mourinavent/features/auth/domain/usecases/current_user.dart';
-import 'package:mourinavent/features/auth/domain/usecases/sign_up_with_google.dart';
-import 'package:mourinavent/features/auth/domain/usecases/user_sign_in.dart';
-import 'package:mourinavent/features/auth/domain/usecases/user_sign_up.dart';
+import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:rinavent/core/common/entities/user.dart';
+import 'package:rinavent/features/auth/domain/usecases/current_user.dart';
+import 'package:rinavent/features/auth/domain/usecases/sign_up_with_apple.dart';
+import 'package:rinavent/features/auth/domain/usecases/sign_up_with_google.dart';
+import 'package:rinavent/features/auth/domain/usecases/user_sign_in.dart';
+import 'package:rinavent/features/auth/domain/usecases/user_sign_up.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -17,17 +18,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final CurrentUser _currentUser;
   final AppUserCubit _appUserCubit;
   final SignUpWithGoogle _signUpWithGoogle;
+  final SignUpWithApple _signUpWithApple;
   // final SignInWithGoogle _signInWithGoogle;
   AuthBloc({
     required UserSignUp userSignUp,
     required UserSignIn userSignIn,
     required SignUpWithGoogle signUpWithGoogle,
     // required SignInWithGoogle signInWithGoogle,
+    required SignUpWithApple signUpWithApple,
+
     required CurrentUser currentUser,
     required AppUserCubit appUserCubit,
   })  : _userSignUp = userSignUp,
         _userSignIn = userSignIn,
         _signUpWithGoogle = signUpWithGoogle,
+        _signUpWithApple = signUpWithApple,
         // _signInWithGoogle = signInWithGoogle,
         _currentUser = currentUser,
         _appUserCubit = appUserCubit,
@@ -37,6 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthSignIn>(_onAuthSignIn);
     on<AuthSignUpWithGoogle>(_onAuthSignUpWithGoogle);
+    on<AuthSignUpWithApple>(_onAuthSignUpWithApple);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
   }
 
@@ -67,6 +73,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _onAuthSignUpWithGoogle(
       AuthSignUpWithGoogle event, Emitter<AuthState> emit) async {
     final res = await _signUpWithGoogle();
+
+    res.fold((l) => emit(AuthFailure(l.message)), (r)=>_emitAuthSucces(r, emit));
+  }
+
+
+    void _onAuthSignUpWithApple(
+      AuthSignUpWithApple event, Emitter<AuthState> emit) async {
+    final res = await _signUpWithApple();
 
     res.fold((l) => emit(AuthFailure(l.message)), (r)=>_emitAuthSucces(r, emit));
   }

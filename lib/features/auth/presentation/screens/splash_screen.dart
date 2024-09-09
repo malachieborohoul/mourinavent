@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mourinavent/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:mourinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
-import 'package:mourinavent/features/auth/presentation/screens/test.dart';
+import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
+import 'package:rinavent/features/auth/presentation/screens/test.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mourinavent/core/common/widgets/custom_button.dart';
-import 'package:mourinavent/core/contants/padding.dart';
-import 'package:mourinavent/core/theme/app_palette.dart';
-import 'package:mourinavent/core/utils/loader_dialog.dart';
-import 'package:mourinavent/core/utils/show_snackbar.dart';
-import 'package:mourinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:mourinavent/features/auth/presentation/screens/signup_screen.dart';
-import 'package:mourinavent/features/auth/presentation/widgets/auth_field.dart';
-import 'package:mourinavent/features/auth/presentation/widgets/custom_button_social.dart';
+import 'package:rinavent/core/common/widgets/custom_button.dart';
+import 'package:rinavent/core/contants/padding.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/utils/loader_dialog.dart';
+import 'package:rinavent/core/utils/show_snackbar.dart';
+import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/auth/presentation/screens/signup_screen.dart';
+import 'package:rinavent/features/auth/presentation/widgets/auth_field.dart';
+import 'package:rinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SigninScreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {

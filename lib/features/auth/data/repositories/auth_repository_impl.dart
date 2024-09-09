@@ -1,10 +1,10 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:mourinavent/core/error/exceptions.dart';
-import 'package:mourinavent/core/error/failures.dart';
-import 'package:mourinavent/core/utils/typedef.dart';
-import 'package:mourinavent/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:mourinavent/features/auth/data/models/user_model.dart';
-import 'package:mourinavent/features/auth/domain/repositories/auth_repository.dart';
+import 'package:rinavent/core/error/exceptions.dart';
+import 'package:rinavent/core/error/failures.dart';
+import 'package:rinavent/core/utils/typedef.dart';
+import 'package:rinavent/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:rinavent/features/auth/data/models/user_model.dart';
+import 'package:rinavent/features/auth/domain/repositories/auth_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -30,6 +30,11 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   ResultFuture<UserModel> signUpWithGoogle() async {
     return _getUser(() async => await authRemoteDataSource.signUpWithGoogle());
+  }
+
+   @override
+  ResultFuture<UserModel> signUpWithApple() {
+    return _getUser(() async => await authRemoteDataSource.signUpWithApple());
   }
 
   ResultFuture<UserModel> _getUser(Future<UserModel> Function() fn) async {
@@ -60,6 +65,8 @@ class AuthRepositoryImpl implements AuthRepository {
       return left(Failure(e.message));
     }
   }
+
+ 
 
   // @override
   // ResultFuture<UserModel> signInWithGoogle() {

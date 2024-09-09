@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:mourinavent/core/usecase/usecase.dart';
-import 'package:mourinavent/core/utils/typedef.dart';
-import 'package:mourinavent/core/common/entities/user.dart';
-import 'package:mourinavent/features/auth/domain/repositories/auth_repository.dart';
+import 'package:rinavent/core/usecase/usecase.dart';
+import 'package:rinavent/core/utils/typedef.dart';
+import 'package:rinavent/core/common/entities/user.dart';
+import 'package:rinavent/features/auth/domain/repositories/auth_repository.dart';
 
 class UserSignIn implements Usecase<User, UserSignInParams> {
   final AuthRepository authRepository;

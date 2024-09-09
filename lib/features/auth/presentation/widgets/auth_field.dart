@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mourinavent/core/contants/padding.dart';
+import 'package:rinavent/core/contants/padding.dart';
 
 class AuthField extends StatelessWidget {
   final String hintText;

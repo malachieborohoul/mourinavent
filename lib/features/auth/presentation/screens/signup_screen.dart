@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mourinavent/core/common/widgets/custom_button.dart';
-import 'package:mourinavent/core/contants/padding.dart';
-import 'package:mourinavent/core/theme/app_palette.dart';
-import 'package:mourinavent/core/utils/loader_dialog.dart';
-import 'package:mourinavent/core/utils/show_snackbar.dart';
-import 'package:mourinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:mourinavent/features/auth/presentation/screens/signin_screen.dart';
-import 'package:mourinavent/features/auth/presentation/screens/test.dart';
-import 'package:mourinavent/features/auth/presentation/widgets/auth_field.dart';
-import 'package:mourinavent/features/auth/presentation/widgets/custom_button_social.dart';
+import 'package:rinavent/core/common/widgets/custom_button.dart';
+import 'package:rinavent/core/contants/padding.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/utils/loader_dialog.dart';
+import 'package:rinavent/core/utils/show_snackbar.dart';
+import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
+import 'package:rinavent/features/auth/presentation/widgets/auth_field.dart';
+import 'package:rinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SignupSreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
@@ -56,8 +55,8 @@ class _SignupSreenState extends State<SignupSreen> {
                     if (state is AuthFailure) {
                       showSnackBar(context, state.message);
                     } else if (state is AuthSuccess) {
-                      Navigator.pushAndRemoveUntil(
-                          context, Test.route(), (route) => false);
+                      // Navigator.pushAndRemoveUntil(
+                      //     context, Test.route(), (route) => false);
                     }
                   }
                 },
@@ -175,7 +174,11 @@ class _SignupSreenState extends State<SignupSreen> {
                           children: [
                             CustomButtonSocial(
                               svgIcon: 'apple_logo.svg',
-                              onPressed: () {},
+                              onPressed: () {
+                                 context
+                                    .read<AuthBloc>()
+                                    .add(AuthSignUpWithApple());
+                              },
                             ),
                             const SizedBox(
                               width: AppPadding.miniSpacer,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mourinavent/core/common/widgets/loader.dart';
+import 'package:rinavent/core/common/widgets/loader.dart';
 
 void showLoaderDialog(BuildContext context) {
   showDialog(

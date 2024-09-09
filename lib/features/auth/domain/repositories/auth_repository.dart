@@ -1,5 +1,5 @@
-import 'package:mourinavent/core/utils/typedef.dart';
-import 'package:mourinavent/core/common/entities/user.dart';
+import 'package:rinavent/core/utils/typedef.dart';
+import 'package:rinavent/core/common/entities/user.dart';
 
 abstract interface class AuthRepository {
   ResultFuture<User> signUp({
@@ -15,6 +15,9 @@ abstract interface class AuthRepository {
 
   ResultFuture<User> signUpWithGoogle();
   // ResultFuture<User> signInWithGoogle();
+
+  ResultFuture<User> signUpWithApple();
+
 
 
   ResultFuture<User> currentUser();

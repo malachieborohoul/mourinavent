@@ -27,5 +27,8 @@ final class AuthSignIn extends AuthEvent {
 class AuthSignUpWithGoogle extends AuthEvent {}
 class AuthSignInWithGoogle extends AuthEvent {}
 
+class AuthSignUpWithApple extends AuthEvent {}
+
+
 
 final class AuthIsUserLoggedIn extends AuthEvent {}

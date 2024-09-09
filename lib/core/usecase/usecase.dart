@@ -1,4 +1,4 @@
-import 'package:mourinavent/core/utils/typedef.dart';
+import 'package:rinavent/core/utils/typedef.dart';
 
 abstract interface class Usecase<SuccessType, Params> {
   ResultFuture<SuccessType> call(Params params);
