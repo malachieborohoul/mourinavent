@@ -16,7 +16,10 @@ class SelectGenderScreen extends StatefulWidget {
   State<SelectGenderScreen> createState() => _SelectGenderScreenState();
 }
 
+enum Gender { male, female }
+
 class _SelectGenderScreenState extends State<SelectGenderScreen> {
+  bool isSelected = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,16 +55,24 @@ class _SelectGenderScreenState extends State<SelectGenderScreen> {
               Column(
                 children: [
                   GenderCard(
+                    isSelected: isSelected,
                     title: 'Male',
-                    onPressed: () {},
+                    onPressed: () {
+                      isSelected = true;
+                      setState(() {});
+                    },
                   ),
                   const SizedBox(
                     height: AppPadding.smallSpacer,
                   ),
                   GenderCard(
+                    isSelected: !isSelected,
                     icon: Icons.female,
                     title: 'Female',
-                    onPressed: () {},
+                    onPressed: () {
+                      isSelected = false;
+                      setState(() {});
+                    },
                   )
                 ],
               )
