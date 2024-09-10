@@ -172,17 +172,17 @@ class _SignupSreenState extends State<SignupSreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomButtonSocial(
-                              svgIcon: 'apple_logo.svg',
-                              onPressed: () {
-                                 context
-                                    .read<AuthBloc>()
-                                    .add(AuthSignUpWithApple());
-                              },
-                            ),
-                            const SizedBox(
-                              width: AppPadding.miniSpacer,
-                            ),
+                            // CustomButtonSocial(
+                            //   svgIcon: 'apple_logo.svg',
+                            //   onPressed: () {
+                            //      context
+                            //         .read<AuthBloc>()
+                            //         .add(AuthSignUpWithApple());
+                            //   },
+                            // ),
+                            // const SizedBox(
+                            //   width: AppPadding.miniSpacer,
+                            // ),
                             CustomButtonSocial(
                               svgIcon: 'google_logo.svg',
                               onPressed: () {

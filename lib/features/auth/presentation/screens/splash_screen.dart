@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/auth/presentation/screens/select_gender_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/test.dart';
 
@@ -16,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+      // Future.delayed(const Duration(seconds: 2)); 
     context.read<AuthBloc>().add(AuthIsUserLoggedIn());
   }
 
@@ -27,14 +29,18 @@ class _SplashScreenState extends State<SplashScreen> {
         return state is AppUserLoggedIn;
       },
       builder: (context, isLoggedIn) {
-        if (isLoggedIn) {
-          return const Test();
-        }
         return BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
-              // L'utilisateur a réussi à s'authentifier
-              Navigator.pushReplacement(context, Test.route());
+              if(state.user.sex.isNotEmpty && state.user.age !=0){
+                // L'utilisateur a réussi à s'authentifier
+                Navigator.pushReplacement(context, Test.route());
+              }else{
+                
+                Navigator.pushReplacement(context,  SelectGenderScreen.route());
+                
+              }
+              
             } else if (state is AuthFailure || state is AuthInitial) {
               // L'utilisateur n'est pas authentifié, redirection vers la page de connexion
               Navigator.pushReplacement(

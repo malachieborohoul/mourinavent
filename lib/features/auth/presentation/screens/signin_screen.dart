@@ -141,10 +141,10 @@ class _SigninScreenState extends State<SigninScreen> {
                          Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomButtonSocial(svgIcon: 'apple_logo.svg', onPressed: () {  },),
-                            const SizedBox(
-                              width: AppPadding.miniSpacer,
-                            ),
+                            // CustomButtonSocial(svgIcon: 'apple_logo.svg', onPressed: () {  },),
+                            // const SizedBox(
+                            //   width: AppPadding.miniSpacer,
+                            // ),
                             CustomButtonSocial(svgIcon: 'google_logo.svg', onPressed: () {  },),
                           ],
                         ),
