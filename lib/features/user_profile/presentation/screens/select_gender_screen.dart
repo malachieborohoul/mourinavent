@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/padding.dart';
-import 'package:rinavent/features/auth/presentation/screens/select_age_screen.dart';
+import 'package:rinavent/features/user_profile/presentation/screens/select_age_screen.dart';
 import 'package:rinavent/features/auth/presentation/widgets/gender_card.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
 

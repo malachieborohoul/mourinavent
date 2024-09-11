@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/constants.dart';
 import 'package:rinavent/core/contants/padding.dart';
-import 'package:rinavent/features/auth/presentation/screens/select_age_screen.dart';
-import 'package:rinavent/features/auth/presentation/widgets/gender_card.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
@@ -59,7 +57,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: AppPadding.smallSpacer,
               ),
               Expanded(

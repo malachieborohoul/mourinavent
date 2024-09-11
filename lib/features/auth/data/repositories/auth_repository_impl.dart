@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:rinavent/core/error/exceptions.dart';
 import 'package:rinavent/core/error/failures.dart';
 import 'package:rinavent/core/utils/typedef.dart';
-import 'package:rinavent/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:rinavent/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:rinavent/features/auth/data/models/user_model.dart';
 import 'package:rinavent/features/auth/domain/repositories/auth_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

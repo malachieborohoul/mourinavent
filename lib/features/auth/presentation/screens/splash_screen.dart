@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:rinavent/features/auth/presentation/screens/select_gender_screen.dart';
+import 'package:rinavent/features/user_profile/presentation/screens/select_gender_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/test.dart';
 
