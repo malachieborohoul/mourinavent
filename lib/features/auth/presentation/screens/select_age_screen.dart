@@ -48,7 +48,7 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
       appBar: AppBar(
           leading: const BackButton(),
           title: const ProgressBar(
-            currentNumber: 1,
+            currentNumber: 2,
             totalNumber: 3,
           )),
       body: Padding(

@@ -19,6 +19,8 @@ class AppTheme {
         fillColor: WidgetStatePropertyAll(AppPalette.gradient1)),
     scaffoldBackgroundColor: AppPalette.backgroundColor,
     appBarTheme: const AppBarTheme(
+          surfaceTintColor: AppPalette.backgroundColor,
+
         backgroundColor: AppPalette.backgroundColor,
         iconTheme: IconThemeData(color: AppPalette.gradient1, size: 30)),
     inputDecorationTheme: InputDecorationTheme(
