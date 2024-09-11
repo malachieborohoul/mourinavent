@@ -5,15 +5,15 @@ import 'package:rinavent/core/theme/app_palette.dart';
 
 
 class CustomAppBar extends StatelessWidget {
-   CustomAppBar({
-    Key? key,
+   const CustomAppBar({
+    super.key,
     this.title = '',
     this.action = false,
     this.actionIcon = 'filter_icon.svg',
     this.iconColor = AppPalette.gradient1,
     this.backgroundColor = AppPalette.backgroundColor,
     this.brightness,
-  }) : super(key: key);
+  });
 
   final String title;
   final bool action;

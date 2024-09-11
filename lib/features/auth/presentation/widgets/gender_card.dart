@@ -11,7 +11,7 @@ class GenderCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onPressed;
-  final isSelected;
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
