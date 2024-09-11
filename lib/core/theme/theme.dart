@@ -18,7 +18,12 @@ class AppTheme {
     checkboxTheme: const CheckboxThemeData(
         fillColor: WidgetStatePropertyAll(AppPalette.gradient1)),
     scaffoldBackgroundColor: AppPalette.backgroundColor,
+    chipTheme: ChipThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        color: const WidgetStatePropertyAll(AppPalette.borderColor),
+        side: BorderSide.none),
     appBarTheme: const AppBarTheme(
+        surfaceTintColor: AppPalette.backgroundColor,
         backgroundColor: AppPalette.backgroundColor,
         iconTheme: IconThemeData(color: AppPalette.gradient1, size: 30)),
     inputDecorationTheme: InputDecorationTheme(

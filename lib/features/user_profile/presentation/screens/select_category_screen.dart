@@ -1,40 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
+import 'package:rinavent/core/contants/constants.dart';
 import 'package:rinavent/core/contants/padding.dart';
-import 'package:rinavent/features/auth/presentation/widgets/gender_card.dart';
+import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
 
-class SelectGenderScreen extends StatefulWidget {
+class SelectCategoryScreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
         return FadeTransition(
           opacity: animation,
-          child: const SelectGenderScreen(),
+          child: const SelectCategoryScreen(),
         );
       });
-  const SelectGenderScreen({super.key});
+  const SelectCategoryScreen({super.key});
 
   @override
-  State<SelectGenderScreen> createState() => _SelectGenderScreenState();
+  State<SelectCategoryScreen> createState() => _SelectCategoryScreenState();
 }
 
-class _SelectGenderScreenState extends State<SelectGenderScreen> {
+enum Gender { male, female }
+
+class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
+  bool isSelected = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
-      ),
+          leading: const BackButton(),
+          title: const ProgressBar(
+            currentNumber: 3,
+            totalNumber: 3,
+          )),
       body: Padding(
         padding: const EdgeInsets.all(AppPadding.appPadding),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 children: [
                   Text(
-                    "What's up ?",
+                    "Select categories  ",
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall!
@@ -44,26 +51,25 @@ class _SelectGenderScreenState extends State<SelectGenderScreen> {
                     height: AppPadding.miniSpacer,
                   ),
                   Text(
-                    "Please Share Your Gender for bet Experience",
+                    "Pick the categories that match your preferences and help us tailor the perfect event for you.",
                     style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  GenderCard(
-                    title: 'Male',
-                    onPressed: () {},
-                  ),
-                  const SizedBox(
-                    height: AppPadding.smallSpacer,
-                  ),
-                  GenderCard(
-                    icon: Icons.female,
-                    title: 'Female',
-                    onPressed: () {},
-                  )
-                ],
+              const SizedBox(
+                height: AppPadding.smallSpacer,
+              ),
+              Expanded(
+                child: Wrap(
+                  spacing: 8.0, // horizontal space beetween elements
+                  runSpacing: 4.0, // vertical
+                  children: List.generate(Constants.categories.length, (i) {
+                    return Chip(
+                      label: Text(Constants.categories[i]),
+                    );
+                  }),
+                ),
               )
             ],
           ),

@@ -6,10 +6,12 @@ class GenderCard extends StatelessWidget {
       {super.key,
       this.icon = Icons.male,
       required this.title,
-      required this.onPressed});
+      required this.onPressed,
+      required this.isSelected });
   final IconData icon;
   final String title;
   final VoidCallback onPressed;
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -20,9 +22,9 @@ class GenderCard extends StatelessWidget {
         height: size,
         width: size,
         decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [
-              AppPalette.gradient1,
-              AppPalette.gradient2,
+            gradient: LinearGradient(colors: [
+              isSelected ? AppPalette.gradient1 : AppPalette.borderColor,
+              isSelected ? AppPalette.gradient2 : AppPalette.borderColor,
             ], begin: Alignment.topLeft, end: Alignment.bottomRight),
             borderRadius: BorderRadius.circular(25)),
         child: ElevatedButton(
@@ -38,12 +40,17 @@ class GenderCard extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: Colors.white,
+                color: isSelected ? Colors.white : Colors.black,
                 size: 80,
               ),
               Text(
                 title,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: isSelected
+                    ? Theme.of(context).textTheme.bodyLarge
+                    : Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: Colors.black),
               )
             ],
           ),
