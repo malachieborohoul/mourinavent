@@ -12,16 +12,16 @@ class CategoryModel extends Category {
     return <String, dynamic>{
       'id': id,
       'title': title,
-      'svgCode': svgCode,
+      'svg_code': svgCode,
       
     };
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
-      id: map['id'] ?? '' ,
-      title: map['title'] ?? '',
-      svgCode: map['svg_code'] ?? '',
+      id: map['id'] as String ,
+      title: map['title'] as String,
+      svgCode: map['svg_code'] as String,
       
     );
   }
