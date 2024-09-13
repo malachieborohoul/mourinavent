@@ -1,100 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:rinavent/core/contants/constants.dart';
-import 'package:rinavent/core/theme/app_palette.dart';
-
 
 class CustomAppBar extends StatelessWidget {
-   const CustomAppBar({
-    super.key,
-    this.title = '',
-    this.action = false,
-    this.actionIcon = 'filter_icon.svg',
-    this.iconColor = AppPalette.gradient1,
-    this.backgroundColor = AppPalette.backgroundColor,
-    this.brightness,
-  });
-
-  final String title;
-  final bool action;
-  final String actionIcon;
-  final Color iconColor;
-  final Color backgroundColor;
-  final Brightness? brightness;
-
+  const CustomAppBar({super.key, required this.title});
+  final Widget title;
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: backgroundColor,
-      elevation: 0.0,
-      automaticallyImplyLeading: false,
-      primary: false,
-      excludeHeaderSemantics: true,
-      flexibleSpace: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    // splashColor: textWhite,
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                    child: Container(
-                      // clipBehavior: Clip.antiAlias,
-                      height: 40.0,
-                      width: 40.0,
-                      decoration: BoxDecoration(
-                        color: AppPalette.gradient1.withOpacity(0.7),
-                        borderRadius: BorderRadius.circular(100.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppPalette.gradient1.withOpacity(0.5),
-                            spreadRadius: 0.0,
-                            blurRadius: 6.0,
-                            offset: const Offset(0, 2),
-                          )
-                        ],
-                      ),
-                      alignment: Alignment.center,
-                      child: SvgPicture.asset(
-                        '${Constants.assetImg}arrow_left_icon.svg',
-                      ),
-                    ),
-                  ),
-                  
-                  const Spacer(),
-                  Text(
-                    title,
-                    style: const TextStyle(fontSize: 17, color: AppPalette.gradient1, fontWeight: FontWeight.w500),
-                  ),
-                  const Spacer(),
-
-                  (action)
-                      ? GestureDetector(
-                        child: SizedBox(
-                            width: 40.0,
-                            child: SvgPicture.asset(
-                              Constants.assetImg + actionIcon,
-                              height: 20.0,
-                            ),
-                          ),
-                      )
-                      : const SizedBox(
-                          width: 40.0,
-                          height: 40.0,
-                        ),
-                  
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
+      leading: const BackButton(),
+      title: title,
     );
   }
 }
