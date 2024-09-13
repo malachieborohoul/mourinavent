@@ -4,7 +4,7 @@ import 'package:rinavent/core/common/entities/user.dart';
 
 
 class UserModel extends User {
-  UserModel( {required super.id, required super.email, required super.name, required super.updatedAt, required super.sex, required super.age, });
+  UserModel( {required super.id, required super.email, required super.name, required super.updatedAt, required super.gender, required super.age, required super.phoneNumber, required super.countryCode, });
   
   
   
@@ -13,8 +13,10 @@ class UserModel extends User {
       'id': id,
       'name': name,
       'email': email,
-      'sex': sex,
+      'gender': gender,
       'age': age,
+      'phone_number': phoneNumber,
+      'country_code': countryCode,
       'updated_at': updatedAt.toIso8601String(),
     };
   }
@@ -24,7 +26,9 @@ class UserModel extends User {
       id: map['id'] ?? '' ,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
-      sex: map['sex'] ?? '',
+      gender: map['gender'] ?? '',
+      phoneNumber: map['phone_number'] ?? '',
+      countryCode: map['country_code'] ?? '',
       age: map['age'] ?? 0,
       updatedAt: map['updated_at'] == null
           ? DateTime.now()
@@ -41,7 +45,9 @@ class UserModel extends User {
     String? id,
     String? name,
     String? email,
-    String? sex,
+    String? gender,
+    String? phoneNumber,
+    String? countryCode,
     int? age,
      DateTime? updatedAt,
   }) {
@@ -49,8 +55,10 @@ class UserModel extends User {
       id: id ?? this.id,
       name: name ?? this.name,
       email: email ?? this.email, 
-      sex: email ?? this.sex, 
+      gender: email ?? this.gender, 
       age: age ?? this.age, 
+      phoneNumber: phoneNumber ?? this.phoneNumber, 
+      countryCode: countryCode ?? this.countryCode, 
       updatedAt:updatedAt ?? this.updatedAt,
     );
   }

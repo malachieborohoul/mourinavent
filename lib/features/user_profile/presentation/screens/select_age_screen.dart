@@ -84,7 +84,7 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                   child: Stack(
                     children: [
                       Positioned(
-                        top: wheelSize * .33,
+                        top: wheelSize * .34,
                         child: Container(
                           width: 100,
                           height: 2,
@@ -92,7 +92,7 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                         ),
                       ),
                       Positioned(
-                        top: wheelSize * .42,
+                        top: wheelSize * .44,
                         child: Container(
                           width: 100,
                           height: 2,
