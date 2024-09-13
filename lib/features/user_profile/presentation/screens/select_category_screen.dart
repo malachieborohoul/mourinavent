@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rinavent/core/common/entities/category.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/common/widgets/loader.dart';
@@ -93,28 +94,59 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                         runSpacing: 4.0, // vertical
                         children: List.generate(categories.length, (i) {
                           return GestureDetector(
-                            onTap: () {
-                              if (selectedCategories.contains(categories[i])) {
-                                selectedCategories.remove(categories[i]);
-                              } else {
-                                selectedCategories.add(categories[i]);
-                              }
-                              setState(() {});
-                            },
-                            child: Chip(
-                              labelStyle: TextStyle(
-                                  color:
-                                      selectedCategories.contains(categories[i])
-                                          ? Colors.white
-                                          : null),
-                              color: selectedCategories.contains(categories[i])
-                                  ? const WidgetStatePropertyAll(
-                                      AppPalette.gradient1,
-                                    )
-                                  : null,
-                              label: Text(categories[i].title),
-                            ),
-                          );
+                              onTap: () {
+                                if (selectedCategories
+                                    .contains(categories[i])) {
+                                  selectedCategories.remove(categories[i]);
+                                } else {
+                                  selectedCategories.add(categories[i]);
+                                }
+                                setState(() {});
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: AppPadding.appPadding),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: selectedCategories
+                                              .contains(categories[i])
+                                          ? AppPalette.gradient1
+                                          : AppPalette.borderColor,
+                                      borderRadius: BorderRadius.circular(30)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: AppPadding.miniSpacer,
+                                        vertical: AppPadding.miniSpacer - 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SvgPicture.string(
+                                          width: AppPadding.miniSpacer + 10,
+                                          height: AppPadding.miniSpacer + 10,
+                                          categories[i].svgCode,
+                                          color: selectedCategories
+                                                  .contains(categories[i])
+                                              ? Colors.white
+                                              : null,
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          categories[i].title,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall!
+                                              .copyWith(
+                                                  color: selectedCategories
+                                                          .contains(
+                                                              categories[i])
+                                                      ? Colors.white
+                                                      : null),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ));
                         }),
                       ),
                     );
