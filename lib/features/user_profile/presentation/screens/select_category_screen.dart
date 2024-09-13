@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rinavent/core/common/entities/category.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
-import 'package:rinavent/core/contants/constants.dart';
+import 'package:rinavent/core/common/widgets/loader.dart';
 import 'package:rinavent/core/contants/padding.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
+import 'package:rinavent/features/user_profile/presentation/bloc/category/category_bloc.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
@@ -21,6 +26,16 @@ enum Gender { male, female }
 
 class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   bool isSelected = true;
+
+  List<Category> selectedCategories = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<CategoryBloc>().add(CategoryLoadCategories());
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,16 +75,52 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
               const SizedBox(
                 height: AppPadding.smallSpacer,
               ),
-              Expanded(
-                child: Wrap(
-                  spacing: 8.0, // horizontal space beetween elements
-                  runSpacing: 4.0, // vertical
-                  children: List.generate(Constants.categories.length, (i) {
-                    return Chip(
-                      label: Text(Constants.categories[i]),
+              BlocConsumer<CategoryBloc, CategoryState>(
+                listener: (context, state) {
+                  if (state is CategoryFailure) {
+                    showSnackBar(context, state.error);
+                  }
+                },
+                builder: (context, state) {
+                  if (state is CategoryLoading) {
+                    return const Loader();
+                  }
+                  if (state is CategorySuccess) {
+                    final categories = state.categories;
+                    return Expanded(
+                      child: Wrap(
+                        spacing: 8.0, // horizontal space beetween elements
+                        runSpacing: 4.0, // vertical
+                        children: List.generate(categories.length, (i) {
+                          return GestureDetector(
+                            onTap: () {
+                              if (selectedCategories.contains(categories[i])) {
+                                selectedCategories.remove(categories[i]);
+                              } else {
+                                selectedCategories.add(categories[i]);
+                              }
+                              setState(() {});
+                            },
+                            child: Chip(
+                              labelStyle: TextStyle(
+                                  color:
+                                      selectedCategories.contains(categories[i])
+                                          ? Colors.white
+                                          : null),
+                              color: selectedCategories.contains(categories[i])
+                                  ? const WidgetStatePropertyAll(
+                                      AppPalette.gradient1,
+                                    )
+                                  : null,
+                              label: Text(categories[i].title),
+                            ),
+                          );
+                        }),
+                      ),
                     );
-                  }),
-                ),
+                  }
+                  return const SizedBox();
+                },
               )
             ],
           ),

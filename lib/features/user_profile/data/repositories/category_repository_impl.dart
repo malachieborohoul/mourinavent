@@ -9,9 +9,9 @@ import 'package:rinavent/features/user_profile/domain/repositories/category_repo
 
 class CategoryRepositoryImpl implements CategoryRepository {
   CategoryRemoteDatasource categoryRemoteDatasource;
-  CategoryRepositoryImpl({
-    required this.categoryRemoteDatasource,
-  });
+  CategoryRepositoryImpl(
+     this.categoryRemoteDatasource,
+  );
   @override
   ResultFuture<List<Category>> getCategories() async {
     try {

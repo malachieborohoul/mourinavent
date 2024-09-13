@@ -11,6 +11,11 @@ import 'package:rinavent/features/auth/domain/usecases/sign_up_with_google.dart'
 import 'package:rinavent/features/auth/domain/usecases/user_sign_in.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/user_profile/data/datasources/category_remote_datasource.dart';
+import 'package:rinavent/features/user_profile/data/repositories/category_repository_impl.dart';
+import 'package:rinavent/features/user_profile/domain/repositories/category_repository.dart';
+import 'package:rinavent/features/user_profile/domain/usecases/get_categories.dart';
+import 'package:rinavent/features/user_profile/presentation/bloc/category/category_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'init_dependencies.main.dart';

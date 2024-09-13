@@ -92,7 +92,7 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                         ),
                       ),
                       Positioned(
-                        top: wheelSize * .45,
+                        top: wheelSize * .42,
                         child: Container(
                           width: 100,
                           height: 2,
