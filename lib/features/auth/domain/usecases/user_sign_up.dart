@@ -9,8 +9,8 @@ class UserSignUp implements Usecase<User, UserSignUpParams> {
 
   UserSignUp(this.authRepository);
   @override
-  ResultFuture<User> call(UserSignUpParams params) {
-    return authRepository.signUp(
+  ResultFuture<User> call(UserSignUpParams params) async{
+    return await authRepository.signUp(
         name: params.name, email: params.email, password: params.password);
   }
 }

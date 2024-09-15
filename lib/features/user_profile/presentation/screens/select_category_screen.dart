@@ -9,6 +9,7 @@ import 'package:rinavent/core/theme/app_palette.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
 import 'package:rinavent/features/user_profile/presentation/bloc/category/category_bloc.dart';
+import 'package:rinavent/features/user_profile/presentation/screens/complete_profile_screen.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
@@ -134,13 +135,14 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                                           categories[i].title,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodySmall!
+                                              .bodyMedium!
                                               .copyWith(
+                                                  fontWeight: FontWeight.w500,
                                                   color: selectedCategories
                                                           .contains(
                                                               categories[i])
                                                       ? Colors.white
-                                                      : null),
+                                                      : AppPalette.greyColor),
                                         )
                                       ],
                                     ),
@@ -160,7 +162,18 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(AppPadding.appPadding),
-        child: CustomButton(buttonText: "Next", onPressed: () {}),
+        child: selectedCategories.isNotEmpty
+            ? CustomButton(
+                buttonText: "Next",
+                onPressed: () {
+                  Navigator.push(context, CompleteProfileScreen.route());
+                })
+            : CustomButton(
+                buttonText: "Next",
+                primaryColor: AppPalette.borderColor,
+                secondaryColor: AppPalette.borderColor,
+                textColor: AppPalette.greyColor,
+                onPressed: () {}),
       ),
     ));
   }
