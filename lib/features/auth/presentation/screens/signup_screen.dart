@@ -7,7 +7,7 @@ import 'package:rinavent/core/utils/loader_dialog.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
-import 'package:rinavent/features/auth/presentation/widgets/auth_field.dart';
+import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SignupSreen extends StatefulWidget {

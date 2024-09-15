@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/padding.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/utils/pick_image.dart';
+import 'package:rinavent/features/user_profile/presentation/widgets/user_avatar.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
   static route() => PageRouteBuilder(pageBuilder: (_, animation, __) {
@@ -16,6 +22,24 @@ class CompleteProfileScreen extends StatefulWidget {
 }
 
 class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+  File? image;
+  TextEditingController nameController = TextEditingController();
+
+  void selectImage() async {
+    final pickedImage = await pickImage();
+    if (pickedImage != null) {
+      setState(() {
+        image = pickedImage;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,9 +76,27 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Column(
-                  children: [],
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          print("object");
+                          selectImage();
+                        },
+                        child: UserAvatar(
+                          image: image,
+                        )),
+                    const SizedBox(
+                      height: AppPadding.smallSpacer,
+                    ),
+                    AuthField(
+                      hintText: "Borohoul Soguelni Malachie",
+                      controller: nameController,
+                      title: 'Name',
+                      textInputType: TextInputType.name,
+                    ),
+                  ],
                 ),
               )
             ],
