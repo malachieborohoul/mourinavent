@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:rinavent/core/common/entities/category.dart';
-import 'package:rinavent/core/common/entities/user.dart';
 import 'package:rinavent/core/usecase/usecase.dart';
 import 'package:rinavent/core/utils/typedef.dart';
 import 'package:rinavent/features/user_profile/domain/repositories/user_profile_repository.dart';

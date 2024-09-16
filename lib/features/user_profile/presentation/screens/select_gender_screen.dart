@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/padding.dart';
+import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:rinavent/features/user_profile/presentation/screens/select_age_screen.dart';
 import 'package:rinavent/features/auth/presentation/widgets/gender_card.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
@@ -54,7 +58,7 @@ class _SelectGenderScreenState extends State<SelectGenderScreen> {
                     ),
                     Text(
                       "Please Share Your Gender for bet Experience",
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppPalette.greyColor),
                     ),
                   ],
                 ),
@@ -68,7 +72,9 @@ class _SelectGenderScreenState extends State<SelectGenderScreen> {
                       title: 'Male',
                       onPressed: () {
                         isSelected = true;
-                        setState(() {});
+                        setState(() {
+                          context.read<CompleteUserProfileCubit>().selectGender("M");
+                        });
                       },
                     ),
                     const SizedBox(
@@ -80,7 +86,10 @@ class _SelectGenderScreenState extends State<SelectGenderScreen> {
                       title: 'Female',
                       onPressed: () {
                         isSelected = false;
-                        setState(() {});
+                        setState(() {
+                          context.read<CompleteUserProfileCubit>().selectGender("F");
+
+                        });
                       },
                     )
                   ],

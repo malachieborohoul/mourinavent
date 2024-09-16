@@ -24,7 +24,7 @@ class CompleteUserProfileCubit extends Cubit<CompleteUserProfileState> {
   }
 
   // Exemple de méthode pour changer l'avatar
-  void selectAvatar(File avatar) {
+  void selectAvatar(File? avatar) {
     emit(state.copyWith(avatar: avatar));
   }
 }

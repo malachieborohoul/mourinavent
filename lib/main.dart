@@ -5,6 +5,7 @@ import 'package:rinavent/core/theme/theme.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/features/auth/presentation/screens/splash_screen.dart';
 import 'package:rinavent/features/user_profile/presentation/bloc/category/category_bloc.dart';
+import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:rinavent/init_dependencies.dart';
 
 void main() async {
@@ -16,6 +17,9 @@ void main() async {
       BlocProvider(create: (_) => serviceLocator<AppUserCubit>()),
       BlocProvider(create: (_) => serviceLocator<AuthBloc>()),
       BlocProvider(create: (_) => serviceLocator<CategoryBloc>()),
+      BlocProvider(create: (_) => serviceLocator<CompleteUserProfileCubit>(),
+      
+      ),
     ],
     child: const MyApp(),
   ));

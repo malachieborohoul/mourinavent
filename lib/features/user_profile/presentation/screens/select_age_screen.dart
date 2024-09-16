@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/padding.dart';
 import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:rinavent/features/user_profile/presentation/screens/select_category_screen.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
 import 'package:vibration/vibration.dart';
@@ -24,12 +26,13 @@ enum Gender { male, female }
 class _SelectAgeScreenState extends State<SelectAgeScreen> {
   late FixedExtentScrollController _hourController;
   int selectedIndex = 0;
+  int startAge = 18;
 
   @override
   void initState() {
     super.initState();
-
-    _hourController = FixedExtentScrollController();
+    selectedIndex = context.read<CompleteUserProfileCubit>().state.age ?? 0;
+    _hourController = FixedExtentScrollController(initialItem: selectedIndex);
   }
 
   @override
@@ -74,7 +77,10 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                     ),
                     Text(
                       "We will help you find a specific event for your age",
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall!
+                          .copyWith(color: AppPalette.greyColor),
                     ),
                   ],
                 ),
@@ -108,6 +114,8 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                             setState(() {
                               selectedIndex =
                                   value; // Mettre à jour l'index sélectionné
+
+                              print(selectedIndex);
                             });
 
                             // Check if vibration is available, then vibrate
@@ -124,7 +132,7 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                             childCount: 30,
                             builder: (context, i) {
                               return Center(
-                                child: Text("${i + 18}",
+                                child: Text("${i + startAge}",
                                     style: selectedIndex == i
                                         ? Theme.of(context)
                                             .textTheme
@@ -155,6 +163,8 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
         child: CustomButton(
             buttonText: "Next",
             onPressed: () {
+              context.read<CompleteUserProfileCubit>().selectAge(selectedIndex);
+
               Navigator.push(context, SelectCategoryScreen.route());
             }),
       ),

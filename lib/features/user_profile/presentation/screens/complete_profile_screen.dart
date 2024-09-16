@@ -1,11 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/padding.dart';
-import 'package:rinavent/core/theme/app_palette.dart';
 import 'package:rinavent/core/utils/pick_image.dart';
+import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:rinavent/features/user_profile/presentation/widgets/user_avatar.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
@@ -30,8 +34,21 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
     if (pickedImage != null) {
       setState(() {
         image = pickedImage;
+        context.read<CompleteUserProfileCubit>().selectAvatar(image);
       });
     }
+  }
+
+  @override
+  void initState() {
+    if (context.read<CompleteUserProfileCubit>().state.avatar != null) {
+      image = context.read<CompleteUserProfileCubit>().state.avatar;
+    }
+    final appUserState = context.read<AppUserCubit>().state;
+    if (appUserState is AppUserLoggedIn) {
+      nameController.text = appUserState.user.name;
+    }
+    super.initState();
   }
 
   @override
@@ -47,15 +64,15 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
       appBar: AppBar(
         leading: const BackButton(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(AppPadding.appPadding),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(AppPadding.appPadding),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
                   children: [
                     Text(
                       "Complete Your Profile",
@@ -74,10 +91,10 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                     ),
                   ],
                 ),
-              ),
-              Expanded(
-                flex: 4,
-                child: Column(
+                SizedBox(
+                  height: AppPadding.smallSpacer,
+                ),
+                Column(
                   children: [
                     GestureDetector(
                         onTap: () {
@@ -96,10 +113,33 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                       title: 'Name',
                       textInputType: TextInputType.name,
                     ),
+                    const SizedBox(
+                      height: AppPadding.smallSpacer,
+                    ),
+                    IntlPhoneField(
+                      pickerDialogStyle: PickerDialogStyle(
+                        countryCodeStyle: Theme.of(context)
+                          .textTheme
+                          .bodySmall,
+                          countryNameStyle: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                      ),
+                      cursorColor: Colors.black,
+                      dropdownTextStyle: Theme.of(context)
+                          .textTheme
+                          .bodySmall!
+                          .copyWith(color: Colors.black),
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.black),
+                      initialCountryCode: 'TD',
+                      onChanged: (phone) {
+                        print(phone.completeNumber);
+                      },
+                    )
                   ],
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
