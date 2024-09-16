@@ -91,14 +91,14 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: AppPadding.smallSpacer,
                 ),
                 Column(
                   children: [
                     GestureDetector(
                         onTap: () {
-                          print("object");
+                          
                           selectImage();
                         },
                         child: UserAvatar(

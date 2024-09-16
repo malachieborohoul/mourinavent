@@ -17,7 +17,7 @@ class UserAvatar extends StatelessWidget {
     return Stack(
       children: [
         image != null
-            ? Container(
+            ? SizedBox(
                 height: 125,
                 width: 125,
                 child: ClipRRect(
@@ -30,7 +30,7 @@ class UserAvatar extends StatelessWidget {
             : const CircleAvatar(
                 radius: AppPadding.spacer + 10,
                 backgroundColor: AppPalette.borderColor,
-                child: const Icon(
+                child:  Icon(
                   Icons.person_2_rounded,
                   color: AppPalette.greyColor,
                   size: 60,

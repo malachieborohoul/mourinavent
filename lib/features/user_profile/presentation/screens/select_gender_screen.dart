@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
 import 'package:rinavent/core/contants/padding.dart';
 import 'package:rinavent/core/theme/app_palette.dart';

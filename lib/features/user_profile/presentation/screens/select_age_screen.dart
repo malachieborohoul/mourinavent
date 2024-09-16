@@ -115,7 +115,6 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
                               selectedIndex =
                                   value; // Mettre à jour l'index sélectionné
 
-                              print(selectedIndex);
                             });
 
                             // Check if vibration is available, then vibrate

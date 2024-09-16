@@ -39,7 +39,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     selectedCategories = List.from(
         context.read<CompleteUserProfileCubit>().state.categories ?? []);
 
-    print(selectedCategories.length);
+  
 
     context.read<CategoryBloc>().add(CategoryLoadCategories());
   }

@@ -20,7 +20,6 @@ class UserProfileRemoteDatasourceImpl implements UserProfileRemoteDatasource{
   
   @override
   Future<void> completeUserProfile({required String name, required String gender, required String age, required String phoneNumber, required String countryCode, required List<Category> selectedCategories})async {
-    // TODO: implement completeUserProfile
     throw UnimplementedError();
   }
 

@@ -4,7 +4,7 @@ import 'package:rinavent/core/common/entities/category.dart';
 
 
 class CategoryModel extends Category {
-  CategoryModel( {required super.id,  required super.title, required super.svgCode, });
+  const CategoryModel( {required super.id,  required super.title, required super.svgCode, });
   
   
   
