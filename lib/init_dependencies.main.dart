@@ -5,6 +5,7 @@ final serviceLocator = GetIt.instance;
 Future<void> initDependencies() async {
   _initAuth();
   _initCategory();
+  _initUserProfile();
   final supabase = await Supabase.initialize(
     url: AppSecrets.supabaseUrl,
     anonKey: AppSecrets.supabaseAnonKey,
@@ -109,6 +110,24 @@ void _initCategory() {
     ..registerLazySingleton(
       () => CategoryBloc(
         getCategories: serviceLocator(),
+      ),
+    );
+}
+
+
+void _initUserProfile() {
+  //Datasource
+
+
+    // Repository
+
+    //Usecases
+   
+
+    //Bloc
+    serviceLocator.registerLazySingleton(
+      () => CompleteUserProfileCubit(
+        
       ),
     );
 }

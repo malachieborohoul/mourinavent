@@ -16,6 +16,7 @@ import 'package:rinavent/features/user_profile/data/repositories/category_reposi
 import 'package:rinavent/features/user_profile/domain/repositories/category_repository.dart';
 import 'package:rinavent/features/user_profile/domain/usecases/get_categories.dart';
 import 'package:rinavent/features/user_profile/presentation/bloc/category/category_bloc.dart';
+import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'init_dependencies.main.dart';

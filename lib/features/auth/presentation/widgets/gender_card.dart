@@ -7,7 +7,7 @@ class GenderCard extends StatelessWidget {
       this.icon = Icons.male,
       required this.title,
       required this.onPressed,
-      required this.isSelected });
+      required this.isSelected});
   final IconData icon;
   final String title;
   final VoidCallback onPressed;
@@ -46,7 +46,10 @@ class GenderCard extends StatelessWidget {
               Text(
                 title,
                 style: isSelected
-                    ? Theme.of(context).textTheme.bodyLarge
+                    ? Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: AppPalette.whiteColor)
                     : Theme.of(context)
                         .textTheme
                         .bodyLarge!

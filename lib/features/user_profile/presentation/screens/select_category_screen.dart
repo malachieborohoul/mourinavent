@@ -9,6 +9,7 @@ import 'package:rinavent/core/theme/app_palette.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/widgets/progress_bar.dart';
 import 'package:rinavent/features/user_profile/presentation/bloc/category/category_bloc.dart';
+import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:rinavent/features/user_profile/presentation/screens/complete_profile_screen.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
@@ -34,6 +35,11 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   @override
   void initState() {
     super.initState();
+
+    selectedCategories = List.from(
+        context.read<CompleteUserProfileCubit>().state.categories ?? []);
+
+  
 
     context.read<CategoryBloc>().add(CategoryLoadCategories());
   }
@@ -69,7 +75,10 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                   ),
                   Text(
                     "Pick the categories that match your preferences and help us tailor the perfect event for you.",
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: AppPalette.greyColor),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -166,6 +175,10 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
             ? CustomButton(
                 buttonText: "Next",
                 onPressed: () {
+                  context
+                      .read<CompleteUserProfileCubit>()
+                      .selectCategories(selectedCategories);
+
                   Navigator.push(context, CompleteProfileScreen.route());
                 })
             : CustomButton(

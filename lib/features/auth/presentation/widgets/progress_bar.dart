@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rinavent/core/contants/padding.dart';
 import 'package:rinavent/core/theme/app_palette.dart';
 
@@ -45,7 +44,7 @@ class ProgressBar extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           width: AppPadding.miniSpacer,
         ),
         Text(

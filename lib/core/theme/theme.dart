@@ -15,6 +15,7 @@ class AppTheme {
           FontWeight fontWeight = FontWeight.normal}) =>
       TextStyle(fontFamily: 'Inter', color: color, fontWeight: fontWeight);
   static final lightThemeMode = ThemeData.light().copyWith(
+   
     checkboxTheme: const CheckboxThemeData(
         fillColor: WidgetStatePropertyAll(AppPalette.gradient1)),
     scaffoldBackgroundColor: AppPalette.backgroundColor,
@@ -27,6 +28,9 @@ class AppTheme {
         backgroundColor: AppPalette.backgroundColor,
         iconTheme: IconThemeData(color: AppPalette.gradient1, size: 30)),
     inputDecorationTheme: InputDecorationTheme(
+      labelStyle: const TextStyle(color: AppPalette.greyColor, fontSize: 12),
+      floatingLabelStyle: const TextStyle(color: AppPalette.greyColor, fontSize: 12),
+      prefixStyle: const TextStyle(color: AppPalette.greyColor, fontSize: 12),
       hintStyle: const TextStyle(color: AppPalette.greyColor, fontSize: 12),
       contentPadding: const EdgeInsets.all(15),
       border: _border(),
@@ -34,7 +38,14 @@ class AppTheme {
       focusedBorder: _border(AppPalette.gradient1),
       errorBorder: _border(AppPalette.errorColor),
     ),
+
+    
     textTheme: TextTheme(
+      displayLarge: const TextStyle(color: Colors.black),
+      displayMedium: const TextStyle(color: Colors.black),
+      displaySmall: const TextStyle(color: Colors.black),
+      headlineLarge: const TextStyle(color: Colors.black),
+      headlineMedium: const TextStyle(color: Colors.black),
         headlineSmall: _textStyle(
           fontWeight: FontWeight.w500,
         ),
@@ -42,7 +53,19 @@ class AppTheme {
           fontWeight: FontWeight.w500,
         ),
         titleSmall: _textStyle(),
-        titleMedium: _textStyle(color: Colors.white),
-        bodySmall: _textStyle(color: AppPalette.greyColor)),
+        titleMedium: _textStyle(),
+      bodyLarge: const TextStyle(color: Colors.black),
+      bodyMedium: const TextStyle(color: Colors.black),
+
+        bodySmall: _textStyle(color: Colors.black),
+      labelLarge: const TextStyle(color: Colors.black),
+      labelMedium: const TextStyle(color: Colors.black),
+      labelSmall: const TextStyle(color: Colors.black),
+        
+        
+        
+        ),
+
+        
   );
 }
