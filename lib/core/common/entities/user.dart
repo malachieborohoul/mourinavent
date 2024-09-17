@@ -6,6 +6,7 @@ class User {
   final int age;
   final String phoneNumber;
   final String countryCode;
+  final String avatar;
   final DateTime updatedAt;
 
   User( {
@@ -16,6 +17,7 @@ class User {
     required this.age,
     required this.phoneNumber,
     required this.countryCode,
+    required this.avatar,
     required this.updatedAt,
   });
 }
