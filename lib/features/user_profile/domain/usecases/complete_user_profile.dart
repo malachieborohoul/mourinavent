@@ -7,7 +7,7 @@ import 'package:rinavent/core/usecase/usecase.dart';
 import 'package:rinavent/core/utils/typedef.dart';
 import 'package:rinavent/features/user_profile/domain/repositories/user_profile_repository.dart';
 
-class CompleteUserProfile implements Usecase<void, CompleteUserProfileParams> {
+class CompleteUserProfile implements Usecase<User, CompleteUserProfileParams> {
   final UserProfileRepository userProfileRepository;
 
   CompleteUserProfile(this.userProfileRepository);
@@ -26,7 +26,7 @@ class CompleteUserProfile implements Usecase<void, CompleteUserProfileParams> {
   }
 }
 
-class CompleteUserProfileParams extends Equatable {
+class CompleteUserProfileParams {
   
   final String id;
   final String email;
@@ -50,6 +50,5 @@ class CompleteUserProfileParams extends Equatable {
     required this.selectedCategories,
   });
 
-  @override
-  List<Object?> get props => throw UnimplementedError();
+ 
 }
