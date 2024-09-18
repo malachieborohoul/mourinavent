@@ -9,5 +9,15 @@ sealed class UserProfileEvent extends Equatable {
 
 
 final class UserProfileCompleteUserProfile extends UserProfileEvent{
+  final String id;
+  final String email;
+  final String name;
+  final String gender;
+  final String age;
+  final String phoneNumber;
+  final String countryCode;
+  final File image;
+  final List<Category> selectedCategories;
 
+  const UserProfileCompleteUserProfile(this.id, this.email, this.name, this.gender, this.age, this.phoneNumber, this.countryCode, this.image, this.selectedCategories);
 }

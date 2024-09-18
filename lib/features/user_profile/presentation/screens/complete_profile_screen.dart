@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:intl_phone_field/phone_number.dart';
 import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/core/common/widgets/custom_button.dart';
