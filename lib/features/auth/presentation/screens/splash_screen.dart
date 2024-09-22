@@ -32,7 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
         return BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
-              if(state.user.gender.isNotEmpty && state.user.age !=0){
+              if(state.user.gender.isNotEmpty && state.user.age !=0 && state.user.countryCode.isNotEmpty 
+              && state.user.phoneNumber.isNotEmpty){
                 // L'utilisateur a réussi à s'authentifier
                 Navigator.pushReplacement(context, Test.route());
               }else{

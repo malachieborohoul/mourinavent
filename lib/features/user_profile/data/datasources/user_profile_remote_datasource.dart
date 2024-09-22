@@ -49,6 +49,7 @@ class UserProfileRemoteDatasourceImpl implements UserProfileRemoteDatasource {
 
       return updatedUser;
     } on PostgrestException catch (e) {
+
       throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());

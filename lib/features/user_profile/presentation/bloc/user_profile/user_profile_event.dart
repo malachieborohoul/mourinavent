@@ -13,7 +13,7 @@ final class UserProfileCompleteUserProfile extends UserProfileEvent{
   final String email;
   final String name;
   final String gender;
-  final String age;
+  final int age;
   final String phoneNumber;
   final String countryCode;
   final File image;
