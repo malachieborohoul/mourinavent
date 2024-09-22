@@ -63,6 +63,12 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+
+     ..registerFactory(
+      () => UserSignOut(
+        serviceLocator(),
+      ),
+    )
     ..registerFactory(
       () => CurrentUser(
         serviceLocator(),
@@ -77,7 +83,7 @@ void _initAuth() {
         currentUser: serviceLocator(),
         appUserCubit: serviceLocator(),
         signUpWithGoogle: serviceLocator(),
-        signUpWithApple: serviceLocator(),
+        signUpWithApple: serviceLocator(), userSignOut: serviceLocator(),
       ),
     );
 }

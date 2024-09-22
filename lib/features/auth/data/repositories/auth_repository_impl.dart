@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:rinavent/core/common/entities/user.dart';
 import 'package:rinavent/core/error/exceptions.dart';
 import 'package:rinavent/core/error/failures.dart';
 import 'package:rinavent/core/utils/typedef.dart';
@@ -59,6 +60,21 @@ class AuthRepositoryImpl implements AuthRepository {
       }
 
       return right(user);
+    } on AuthException catch (e) {
+      return left(Failure(e.message));
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+  @override
+  ResultFuture<void> signOut() async{
+        try {
+      await authRemoteDataSource.signOut();
+
+     
+
+      return right(null);
     } on AuthException catch (e) {
       return left(Failure(e.message));
     } on ServerException catch (e) {

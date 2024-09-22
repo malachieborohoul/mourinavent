@@ -9,6 +9,7 @@ import 'package:rinavent/features/auth/domain/usecases/current_user.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_apple.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_google.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_in.dart';
+import 'package:rinavent/features/auth/domain/usecases/user_sign_out.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/features/user_profile/data/datasources/category_remote_datasource.dart';

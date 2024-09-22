@@ -13,6 +13,8 @@ abstract interface class AuthRepository {
     required String password,
   });
 
+
+  ResultFuture<void> signOut();
   ResultFuture<User> signUpWithGoogle();
   // ResultFuture<User> signInWithGoogle();
 
