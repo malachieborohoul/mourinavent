@@ -12,6 +12,7 @@ import 'package:rinavent/core/theme/app_palette.dart';
 import 'package:rinavent/core/utils/loader_dialog.dart';
 import 'package:rinavent/core/utils/pick_image.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
+import 'package:rinavent/features/auth/presentation/screens/test.dart';
 import 'package:rinavent/features/user_profile/presentation/bloc/user_profile/user_profile_bloc.dart';
 import 'package:rinavent/features/user_profile/presentation/cubits/complete_user_profile/complete_user_profile_cubit.dart';
 import 'package:rinavent/features/user_profile/presentation/widgets/user_avatar.dart';
@@ -90,8 +91,8 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   if (state is UserProfileFailure) {
                     showSnackBar(context, state.message);
                   } else if (state is UserProfileSuccess) {
-                    // Navigator.pushAndRemoveUntil(
-                    //     context, Test.route(), (route) => false);
+                    Navigator.pushAndRemoveUntil(
+                        context, Test.route(), (route) => false);
                   }
                 }
               },
@@ -217,7 +218,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                             completeUserProfile.age!,
                             phoneNumber,
                             countryCode,
-                            completeUserProfile.avatar!,
+                            completeUserProfile.avatar,
                             completeUserProfile.categories!));
                   })
               : CustomButton(

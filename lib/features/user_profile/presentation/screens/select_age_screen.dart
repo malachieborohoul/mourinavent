@@ -162,7 +162,7 @@ class _SelectAgeScreenState extends State<SelectAgeScreen> {
         child: CustomButton(
             buttonText: "Next",
             onPressed: () {
-              context.read<CompleteUserProfileCubit>().selectAge(selectedIndex);
+              context.read<CompleteUserProfileCubit>().selectAge(selectedIndex+startAge);
 
               Navigator.push(context, SelectCategoryScreen.route());
             }),

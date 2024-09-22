@@ -34,7 +34,7 @@ class CompleteUserProfileParams {
   final int age;
   final String phoneNumber;
   final String countryCode;
-  final File image;
+  final File? image;
   final List<Category> selectedCategories;
 
   const CompleteUserProfileParams({
