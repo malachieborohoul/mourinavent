@@ -1,5 +1,4 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:rinavent/core/common/entities/user.dart';
 import 'package:rinavent/core/error/exceptions.dart';
 import 'package:rinavent/core/error/failures.dart';
 import 'package:rinavent/core/utils/typedef.dart';

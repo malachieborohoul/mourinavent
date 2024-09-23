@@ -8,6 +8,7 @@ import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
 import 'package:rinavent/core/common/widgets/auth_field.dart';
+import 'package:rinavent/features/auth/presentation/screens/splash_screen.dart';
 import 'package:rinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SignupSreen extends StatefulWidget {
@@ -55,8 +56,8 @@ class _SignupSreenState extends State<SignupSreen> {
                     if (state is AuthFailure) {
                       showSnackBar(context, state.message);
                     } else if (state is AuthSuccess) {
-                      // Navigator.pushAndRemoveUntil(
-                      //     context, Test.route(), (route) => false);
+                      Navigator.pushAndRemoveUntil(
+                          context, SplashScreen.route(), (route) => false);
                     }
                   }
                 },

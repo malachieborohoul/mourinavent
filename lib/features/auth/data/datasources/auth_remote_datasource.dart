@@ -188,6 +188,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<void> signOut() async {
     try {
       await supabaseClient.auth.signOut();
+      await googleSignIn.signOut();
 
     } on AuthException catch (e) {
       throw ServerException(e.message);

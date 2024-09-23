@@ -29,6 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required SignUpWithGoogle signUpWithGoogle,
     // required SignInWithGoogle signInWithGoogle,
     required SignUpWithApple signUpWithApple,
+
     required CurrentUser currentUser,
     required AppUserCubit appUserCubit,
   })  : _userSignUp = userSignUp,
@@ -74,28 +75,31 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
   }
 
-  void _onAuthSignOut(AuthSignOut event, Emitter<AuthState> emit) async {
-    final res = await _userSignOut();
+    void _onAuthSignOut(AuthSignOut event, Emitter<AuthState> emit) async {
+    final res = await _userSignOut(
+        );
 
-    res.fold((l) => emit(AuthFailure(l.message)), (r) {});
+    res.fold(
+        (l) => emit(AuthFailure(l.message)), (r) {
+                _appUserCubit.updateUser(null);
+
+      emit(AuthSignOutSuccess());
+        });
   }
 
   void _onAuthSignUpWithGoogle(
       AuthSignUpWithGoogle event, Emitter<AuthState> emit) async {
     final res = await _signUpWithGoogle();
 
-    res.fold((l) => emit(AuthFailure(l.message)), (r) {
-      _appUserCubit.close();
-      emit(AuthSignOutSuccess());
-    });
+    res.fold((l) => emit(AuthFailure(l.message)), (r)=>_emitAuthSucces(r, emit));
   }
 
-  void _onAuthSignUpWithApple(
+
+    void _onAuthSignUpWithApple(
       AuthSignUpWithApple event, Emitter<AuthState> emit) async {
     final res = await _signUpWithApple();
 
-    res.fold(
-        (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
+    res.fold((l) => emit(AuthFailure(l.message)), (r)=>_emitAuthSucces(r, emit));
   }
 
   void _emitAuthSucces(User user, Emitter<AuthState> emit) async {
