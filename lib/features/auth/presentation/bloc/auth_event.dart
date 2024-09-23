@@ -24,6 +24,11 @@ final class AuthSignIn extends AuthEvent {
   const AuthSignIn({required this.email, required this.password});
 }
 
+final class AuthSignOut extends AuthEvent {
+
+ 
+}
+
 class AuthSignUpWithGoogle extends AuthEvent {}
 class AuthSignInWithGoogle extends AuthEvent {}
 

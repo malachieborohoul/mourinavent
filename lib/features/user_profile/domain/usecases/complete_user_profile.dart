@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:equatable/equatable.dart';
 import 'package:rinavent/core/common/entities/category.dart';
 import 'package:rinavent/core/common/entities/user.dart';
 import 'package:rinavent/core/usecase/usecase.dart';
@@ -32,10 +31,10 @@ class CompleteUserProfileParams {
   final String email;
   final String name;
   final String gender;
-  final String age;
+  final int age;
   final String phoneNumber;
   final String countryCode;
-  final File image;
+  final File? image;
   final List<Category> selectedCategories;
 
   const CompleteUserProfileParams({

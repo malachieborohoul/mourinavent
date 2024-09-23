@@ -63,6 +63,12 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+
+     ..registerFactory(
+      () => UserSignOut(
+        serviceLocator(),
+      ),
+    )
     ..registerFactory(
       () => CurrentUser(
         serviceLocator(),
@@ -77,7 +83,7 @@ void _initAuth() {
         currentUser: serviceLocator(),
         appUserCubit: serviceLocator(),
         signUpWithGoogle: serviceLocator(),
-        signUpWithApple: serviceLocator(),
+        signUpWithApple: serviceLocator(), userSignOut: serviceLocator(),
       ),
     );
 }
@@ -118,16 +124,42 @@ void _initCategory() {
 void _initUserProfile() {
   //Datasource
 
+  serviceLocator
+    ..registerFactory<UserProfileRemoteDatasource>(
+      () => UserProfileRemoteDatasourceImpl(
+        serviceLocator(),
+      ),
+    )
 
     // Repository
+    ..registerFactory<UserProfileRepository>(
+      () => UserProfileRepositoryImpl(
+        serviceLocator(),
+      ),
+    )
 
     //Usecases
+    ..registerFactory(
+      () => CompleteUserProfile(
+        serviceLocator(),
+      ),
+    )
    
 
     //Bloc
-    serviceLocator.registerLazySingleton(
+   
+    ..registerLazySingleton(
+      () => UserProfileBloc(completeUserProfile: serviceLocator(), appUserCubit: serviceLocator()
+        
+      ),
+    );
+
+    //Cubit
+        serviceLocator.registerLazySingleton(
       () => CompleteUserProfileCubit(
         
       ),
     );
+
+  
 }

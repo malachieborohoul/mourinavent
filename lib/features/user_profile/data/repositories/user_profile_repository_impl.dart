@@ -19,10 +19,10 @@ class UserProfileRepositoryImpl implements UserProfileRepository {
       required String email,
       required String name,
       required String gender,
-      required String age,
+      required int age,
       required String phoneNumber,
       required String countryCode,
-      required File image,
+      required File? image,
       required List<Category> selectedCategories}) async {
     try {
       UserModel userModel = UserModel(
@@ -31,15 +31,20 @@ class UserProfileRepositoryImpl implements UserProfileRepository {
           name: name,
           updatedAt: DateTime.now(),
           gender: gender,
-          age: int.parse(age),
+          age: age,
           phoneNumber: phoneNumber,
           countryCode: countryCode,
           avatar: '');
 
+
+    if (image != null){
       final imageUrl = await userProfileRemoteDatasource.uploadUserAvatar(
           image: image, userId: id);
-
       userModel = userModel.copyWith(avatar: imageUrl);
+
+    }
+      
+
 
       final user = await userProfileRemoteDatasource.completeUserProfile(userModel, selectedCategories);
       return right(user);

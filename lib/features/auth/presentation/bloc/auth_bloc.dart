@@ -7,6 +7,7 @@ import 'package:rinavent/features/auth/domain/usecases/current_user.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_apple.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_google.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_in.dart';
+import 'package:rinavent/features/auth/domain/usecases/user_sign_out.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_up.dart';
 
 part 'auth_event.dart';
@@ -15,6 +16,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserSignUp _userSignUp;
   final UserSignIn _userSignIn;
+  final UserSignOut _userSignOut;
   final CurrentUser _currentUser;
   final AppUserCubit _appUserCubit;
   final SignUpWithGoogle _signUpWithGoogle;
@@ -23,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required UserSignUp userSignUp,
     required UserSignIn userSignIn,
+    required UserSignOut userSignOut,
     required SignUpWithGoogle signUpWithGoogle,
     // required SignInWithGoogle signInWithGoogle,
     required SignUpWithApple signUpWithApple,
@@ -31,6 +34,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required AppUserCubit appUserCubit,
   })  : _userSignUp = userSignUp,
         _userSignIn = userSignIn,
+        _userSignOut = userSignOut,
         _signUpWithGoogle = signUpWithGoogle,
         _signUpWithApple = signUpWithApple,
         // _signInWithGoogle = signInWithGoogle,
@@ -41,6 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthSignIn>(_onAuthSignIn);
+    on<AuthSignOut>(_onAuthSignOut);
     on<AuthSignUpWithGoogle>(_onAuthSignUpWithGoogle);
     on<AuthSignUpWithApple>(_onAuthSignUpWithApple);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
@@ -68,6 +73,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     res.fold(
         (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
+  }
+
+    void _onAuthSignOut(AuthSignOut event, Emitter<AuthState> emit) async {
+    final res = await _userSignOut(
+        );
+
+    res.fold(
+        (l) => emit(AuthFailure(l.message)), (r) {
+                _appUserCubit.updateUser(null);
+
+      emit(AuthSignOutSuccess());
+        });
   }
 
   void _onAuthSignUpWithGoogle(

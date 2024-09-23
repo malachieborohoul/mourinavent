@@ -21,6 +21,8 @@ abstract interface class AuthRemoteDataSource {
     required String password,
   });
 
+  Future<void> signOut();
+
   Future<UserModel?> getCurrentUserData();
 }
 
@@ -177,6 +179,19 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       }
 
       return null;
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    try {
+      await supabaseClient.auth.signOut();
+      await googleSignIn.signOut();
+
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());
     }

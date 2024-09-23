@@ -8,6 +8,7 @@ import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/features/auth/presentation/screens/signup_screen.dart';
 import 'package:rinavent/core/common/widgets/auth_field.dart';
+import 'package:rinavent/features/auth/presentation/screens/splash_screen.dart';
 import 'package:rinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -51,6 +52,10 @@ class _SigninScreenState extends State<SigninScreen> {
                     closeLoaderDialog(context);
                     if (state is AuthFailure) {
                       showSnackBar(context, state.message);
+                    }
+                    else if (state is AuthSuccess) {
+                      Navigator.pushAndRemoveUntil(
+                          context, SplashScreen.route(), (route) => false);
                     }
                   }
                 },
@@ -145,7 +150,11 @@ class _SigninScreenState extends State<SigninScreen> {
                             // const SizedBox(
                             //   width: AppPadding.miniSpacer,
                             // ),
-                            CustomButtonSocial(svgIcon: 'google_logo.svg', onPressed: () {  },),
+                            CustomButtonSocial(svgIcon: 'google_logo.svg', onPressed: () {  
+                              context
+                                    .read<AuthBloc>()
+                                    .add(AuthSignUpWithGoogle());
+                            },),
                           ],
                         ),
                         const SizedBox(

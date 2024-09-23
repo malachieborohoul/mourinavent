@@ -12,6 +12,7 @@ void showLoaderDialog(BuildContext context) {
 }
 
 void closeLoaderDialog(BuildContext context) {
+
   if (Navigator.canPop(context)) {
     Navigator.of(context, rootNavigator: true).pop();
   }

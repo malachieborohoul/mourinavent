@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:rinavent/core/common/entities/category.dart';
 import 'package:rinavent/core/common/entities/user.dart';
 import 'package:rinavent/features/user_profile/domain/usecases/complete_user_profile.dart';
@@ -11,8 +12,12 @@ part 'user_profile_state.dart';
 
 class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   final CompleteUserProfile _completeUserProfile;
-  UserProfileBloc({required CompleteUserProfile completeUserProfile})
-      : _completeUserProfile = completeUserProfile,
+  final AppUserCubit _appUserCubit;
+  UserProfileBloc({
+    required CompleteUserProfile completeUserProfile,
+    required AppUserCubit appUserCubit,
+  })  : _completeUserProfile = completeUserProfile,
+        _appUserCubit = appUserCubit,
         super(UserProfileInitial()) {
     on<UserProfileEvent>((event, emit) => emit(UserProfileLoading()));
     on<UserProfileCompleteUserProfile>(_onCompleteUserProfile);
@@ -31,7 +36,9 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
         image: event.image,
         selectedCategories: event.selectedCategories));
 
-    res.fold((l) => emit(UserProfileFailure(l.message)),
-        (r) => emit(UserProfileSuccess(r)));
+    res.fold((l) => emit(UserProfileFailure(l.message)), (r) {
+      _appUserCubit.updateUser(r);
+      emit(UserProfileSuccess(r));
+    });
   }
 }

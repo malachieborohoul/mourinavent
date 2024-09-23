@@ -10,10 +10,10 @@ abstract interface class UserProfileRepository {
     required String email,
     required String name,
     required String gender,
-    required String age,
+    required int age,
     required String phoneNumber,
     required String countryCode,
-    required File image,
+    required File? image,
     required List<Category> selectedCategories
   });
 }
