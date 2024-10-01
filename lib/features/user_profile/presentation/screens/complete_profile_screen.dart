@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
@@ -182,7 +183,9 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                                 phoneNumber = phone.number;
                               } catch (e) {
                                 isPhoneValid = false;
-                                print(e);
+                                if (kDebugMode) {
+                                  print(e);
+                                }
                               }
 
                               setState(() {});
@@ -203,7 +206,9 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
               ? CustomButton(
                   buttonText: "Complete Profile",
                   onPressed: () {
-                    print("object");
+                    if (kDebugMode) {
+                      print("object");
+                    }
                     final user =
                         (context.read<AppUserCubit>().state as AppUserLoggedIn)
                             .user;
