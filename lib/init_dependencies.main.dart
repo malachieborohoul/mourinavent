@@ -11,7 +11,14 @@ Future<void> initDependencies() async {
     anonKey: AppSecrets.supabaseAnonKey,
   );
 
+  Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
+
+
   serviceLocator.registerLazySingleton(() => supabase.client);
+
+    serviceLocator.registerLazySingleton(
+    () => Hive.box(name: 'profiles'),
+  );
 
   serviceLocator.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn(
         serverClientId: AppSecrets.webClientId,
@@ -23,9 +30,9 @@ Future<void> initDependencies() async {
     () => AppUserCubit(),
   );
 
-   serviceLocator.registerLazySingleton(
+  serviceLocator.registerFactory<ConnectionChecker>(
     () => ConnectionCheckerImpl(
-      serviceLocator()
+      serviceLocator(),
     ),
   );
 }
@@ -41,9 +48,16 @@ void _initAuth() {
       ),
     )
 
+     ..registerFactory<AuthLocalDatasource>(
+      () => AuthLocalDatasourceImpl(
+        serviceLocator(),
+      ),
+    )
+
     // Repository
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
       ),
