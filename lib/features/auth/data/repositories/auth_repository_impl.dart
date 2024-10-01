@@ -73,12 +73,10 @@ class AuthRepositoryImpl implements AuthRepository {
         if (user == null) {
           return left(Failure("User not cached!"));
         }
-        print("Cached");
 
         return right(user);
       }
       final user = await authRemoteDataSource.getCurrentUserData();
-        print("Remote");
 
       if (user == null) {
         return left(Failure("User not logged in!"));

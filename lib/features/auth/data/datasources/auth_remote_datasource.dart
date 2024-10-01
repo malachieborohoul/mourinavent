@@ -47,7 +47,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (user == null) {
         throw const ServerException('User is null');
       }
-      return UserModel.fromMap(user.toJson());
+
+      final userData =
+          await supabaseClient.from('profiles').select().eq('id', user.id);
+      return UserModel.fromMap(userData.first);
+      // return UserModel.fromMap(user.toJson());
     } on AuthException catch (e) {
       throw ServerException(e.message);
     } catch (e) {
@@ -189,7 +193,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       await supabaseClient.auth.signOut();
       await googleSignIn.signOut();
-
     } on AuthException catch (e) {
       throw ServerException(e.message);
     } catch (e) {
