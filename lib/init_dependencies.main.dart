@@ -17,10 +17,16 @@ Future<void> initDependencies() async {
         serverClientId: AppSecrets.webClientId,
         clientId: AppSecrets.iosClientId,
       ));
-
+ serviceLocator.registerFactory(() => InternetConnection());
   //core
   serviceLocator.registerLazySingleton(
     () => AppUserCubit(),
+  );
+
+   serviceLocator.registerLazySingleton(
+    () => ConnectionCheckerImpl(
+      serviceLocator()
+    ),
   );
 }
 
@@ -38,6 +44,7 @@ void _initAuth() {
     // Repository
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
+        serviceLocator(),
         serviceLocator(),
       ),
     )
