@@ -37,3 +37,19 @@ class AuthSignUpWithApple extends AuthEvent {}
 
 
 final class AuthIsUserLoggedIn extends AuthEvent {}
+
+
+final class AuthForgotPassword extends AuthEvent {
+  final String email;
+
+  const AuthForgotPassword({required this.email, });
+}
+
+
+final class AuthForgotPasswordWithToken extends AuthEvent {
+  final String email;
+  final String password;
+  final String token;
+
+  const AuthForgotPasswordWithToken({required this.email, required this.password, required this.token,});
+}

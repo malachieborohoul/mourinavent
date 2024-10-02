@@ -23,4 +23,16 @@ abstract interface class AuthRepository {
 
 
   ResultFuture<User> currentUser();
+
+
+    ResultFuture<void> forgotPassword({
+    required String email,
+  });
+
+     ResultFuture<User> forgotPasswordWithToken({
+    required String email,
+    required String password,
+    required String token,
+  });
+
 }

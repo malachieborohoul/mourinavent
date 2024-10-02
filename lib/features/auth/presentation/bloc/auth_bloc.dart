@@ -6,6 +6,8 @@ import 'package:rinavent/core/common/entities/user.dart';
 import 'package:rinavent/features/auth/domain/usecases/current_user.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_apple.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_google.dart';
+import 'package:rinavent/features/auth/domain/usecases/user_forgot_password.dart';
+import 'package:rinavent/features/auth/domain/usecases/user_forgot_password_with_token.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_in.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_out.dart';
 import 'package:rinavent/features/auth/domain/usecases/user_sign_up.dart';
@@ -21,6 +23,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AppUserCubit _appUserCubit;
   final SignUpWithGoogle _signUpWithGoogle;
   final SignUpWithApple _signUpWithApple;
+  final UserForgotPassword _userForgotPassword;
+  final UserForgotPasswordWithToken _userForgotPasswordWithToken;
+
   // final SignInWithGoogle _signInWithGoogle;
   AuthBloc({
     required UserSignUp userSignUp,
@@ -29,7 +34,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required SignUpWithGoogle signUpWithGoogle,
     // required SignInWithGoogle signInWithGoogle,
     required SignUpWithApple signUpWithApple,
-
+    required UserForgotPassword userForgotPassword,
+    required UserForgotPasswordWithToken userForgotPasswordWithToken,
     required CurrentUser currentUser,
     required AppUserCubit appUserCubit,
   })  : _userSignUp = userSignUp,
@@ -40,6 +46,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         // _signInWithGoogle = signInWithGoogle,
         _currentUser = currentUser,
         _appUserCubit = appUserCubit,
+        _userForgotPassword = userForgotPassword,
+        _userForgotPasswordWithToken = userForgotPasswordWithToken,
         super(AuthInitial()) {
     on<AuthEvent>((_, emit) => emit(AuthLoading()));
 
@@ -49,6 +57,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignUpWithGoogle>(_onAuthSignUpWithGoogle);
     on<AuthSignUpWithApple>(_onAuthSignUpWithApple);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
+
+    on<AuthForgotPassword>(_onAuthForgotPassword);
+    on<AuthForgotPasswordWithToken>(_onAuthForgotPasswordWithToken);
   }
 
   void _isUserLoggedIn(
@@ -75,31 +86,52 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
   }
 
-    void _onAuthSignOut(AuthSignOut event, Emitter<AuthState> emit) async {
-    final res = await _userSignOut(
-        );
+  void _onAuthSignOut(AuthSignOut event, Emitter<AuthState> emit) async {
+    final res = await _userSignOut();
 
-    res.fold(
-        (l) => emit(AuthFailure(l.message)), (r) {
-                _appUserCubit.updateUser(null);
+    res.fold((l) => emit(AuthFailure(l.message)), (r) {
+      _appUserCubit.updateUser(null);
 
       emit(AuthSignOutSuccess());
-        });
+    });
   }
 
   void _onAuthSignUpWithGoogle(
       AuthSignUpWithGoogle event, Emitter<AuthState> emit) async {
     final res = await _signUpWithGoogle();
 
-    res.fold((l) => emit(AuthFailure(l.message)), (r)=>_emitAuthSucces(r, emit));
+    res.fold(
+        (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
   }
 
-
-    void _onAuthSignUpWithApple(
+  void _onAuthSignUpWithApple(
       AuthSignUpWithApple event, Emitter<AuthState> emit) async {
     final res = await _signUpWithApple();
 
-    res.fold((l) => emit(AuthFailure(l.message)), (r)=>_emitAuthSucces(r, emit));
+    res.fold(
+        (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
+  }
+
+  void _onAuthForgotPassword(
+      AuthForgotPassword event, Emitter<AuthState> emit) async {
+    final res =
+        await _userForgotPassword(UserForgotPasswordParams(email: event.email));
+
+    res.fold((l) => emit(AuthFailure(l.message)), (r) {
+      _appUserCubit.updateUser(null);
+
+      emit(AuthForgotPasswordSuccess());
+    });
+  }
+
+  void _onAuthForgotPasswordWithToken(
+      AuthForgotPasswordWithToken event, Emitter<AuthState> emit) async {
+    final res = await _userForgotPasswordWithToken(
+        UserForgotPasswordWithTokenParams(
+            email: event.email, password: event.password, token: event.token));
+
+    res.fold(
+        (l) => emit(AuthFailure(l.message)), (r) => _emitAuthSucces(r, emit));
   }
 
   void _emitAuthSucces(User user, Emitter<AuthState> emit) async {

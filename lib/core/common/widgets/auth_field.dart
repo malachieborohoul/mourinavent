@@ -83,6 +83,14 @@ class AuthField extends StatelessWidget {
                       } else {
                         return null;
                       }
+                    case 4:
+                      if (val!.isEmpty || !RegExp(r'^\d{6}$').hasMatch(val)) {
+                        return "Please enter a valid OTP"; // Message si le champ est vide ou si l'OTP n'est pas valide
+                      } else if (val.length != 6) {
+                        return "OTP must be 6 digits"; // Message si l'OTP n'a pas exactement 6 chiffres
+                      } else {
+                        return null; // L'OTP est valide
+                      }
 
                     default:
                   }

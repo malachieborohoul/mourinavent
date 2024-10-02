@@ -24,6 +24,16 @@ abstract interface class AuthRemoteDataSource {
   Future<void> signOut();
 
   Future<UserModel?> getCurrentUserData();
+
+   Future<void> forgotPassword({
+    required String email,
+  });
+
+     Future<UserModel> forgotPasswordWithToken({
+    required String email,
+    required String password,
+    required String token,
+  });
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -47,7 +57,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (user == null) {
         throw const ServerException('User is null');
       }
-      return UserModel.fromMap(user.toJson());
+
+      final userData =
+          await supabaseClient.from('profiles').select().eq('id', user.id);
+      return UserModel.fromMap(userData.first);
+      // return UserModel.fromMap(user.toJson());
     } on AuthException catch (e) {
       throw ServerException(e.message);
     } catch (e) {
@@ -188,8 +202,44 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<void> signOut() async {
     try {
       await supabaseClient.auth.signOut();
+      
       await googleSignIn.signOut();
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+  
+  @override
+  Future<void> forgotPassword({required String email})async {
+      try {
+      await supabaseClient.auth.resetPasswordForEmail(email);
+      
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+  
+  @override
+  Future<UserModel> forgotPasswordWithToken({required String email, required String password, required String token})async {
+         try {
+      await supabaseClient.auth.verifyOTP(email: email, token: token, type: OtpType.recovery);
+      final response = await supabaseClient.auth.updateUser(
+                        UserAttributes(password: password),
+                      );
 
+                    final user = response.user;
+
+      if (user == null) {
+        throw const ServerException('User is null');
+      }
+
+      final userData =
+          await supabaseClient.from('profiles').select().eq('id', user.id);
+      return UserModel.fromMap(userData.first);
     } on AuthException catch (e) {
       throw ServerException(e.message);
     } catch (e) {
