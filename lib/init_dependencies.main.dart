@@ -13,10 +13,9 @@ Future<void> initDependencies() async {
 
   Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
 
-
   serviceLocator.registerLazySingleton(() => supabase.client);
 
-    serviceLocator.registerLazySingleton(
+  serviceLocator.registerLazySingleton(
     () => Hive.box(name: 'profiles'),
   );
 
@@ -24,7 +23,7 @@ Future<void> initDependencies() async {
         serverClientId: AppSecrets.webClientId,
         clientId: AppSecrets.iosClientId,
       ));
- serviceLocator.registerFactory(() => InternetConnection());
+  serviceLocator.registerFactory(() => InternetConnection());
   //core
   serviceLocator.registerLazySingleton(
     () => AppUserCubit(),
@@ -47,8 +46,7 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
-
-     ..registerFactory<AuthLocalDatasource>(
+    ..registerFactory<AuthLocalDatasource>(
       () => AuthLocalDatasourceImpl(
         serviceLocator(),
       ),
@@ -84,14 +82,23 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
-
-     ..registerFactory(
+    ..registerFactory(
       () => UserSignOut(
         serviceLocator(),
       ),
     )
     ..registerFactory(
       () => CurrentUser(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UserForgotPassword(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UserForgotPasswordWithToken(
         serviceLocator(),
       ),
     )
@@ -104,7 +111,10 @@ void _initAuth() {
         currentUser: serviceLocator(),
         appUserCubit: serviceLocator(),
         signUpWithGoogle: serviceLocator(),
-        signUpWithApple: serviceLocator(), userSignOut: serviceLocator(),
+        signUpWithApple: serviceLocator(),
+        userSignOut: serviceLocator(),
+        userForgotPassword: serviceLocator(),
+        userForgotPasswordWithToken: serviceLocator(),
       ),
     );
 }
@@ -141,7 +151,6 @@ void _initCategory() {
     );
 }
 
-
 void _initUserProfile() {
   //Datasource
 
@@ -165,22 +174,16 @@ void _initUserProfile() {
         serviceLocator(),
       ),
     )
-   
 
     //Bloc
-   
     ..registerLazySingleton(
-      () => UserProfileBloc(completeUserProfile: serviceLocator(), appUserCubit: serviceLocator()
-        
-      ),
+      () => UserProfileBloc(
+          completeUserProfile: serviceLocator(),
+          appUserCubit: serviceLocator()),
     );
 
-    //Cubit
-        serviceLocator.registerLazySingleton(
-      () => CompleteUserProfileCubit(
-        
-      ),
-    );
-
-  
+  //Cubit
+  serviceLocator.registerLazySingleton(
+    () => CompleteUserProfileCubit(),
+  );
 }

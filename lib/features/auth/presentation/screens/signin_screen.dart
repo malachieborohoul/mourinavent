@@ -6,6 +6,7 @@ import 'package:rinavent/core/theme/app_palette.dart';
 import 'package:rinavent/core/utils/loader_dialog.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rinavent/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/signup_screen.dart';
 import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/features/auth/presentation/screens/splash_screen.dart';
@@ -45,15 +46,14 @@ class _SigninScreenState extends State<SigninScreen> {
             child: Padding(
               padding: const EdgeInsets.all(AppPadding.appPadding),
               child: BlocConsumer<AuthBloc, AuthState>(
-             listener: (context, state) {
+                listener: (context, state) {
                   if (state is AuthLoading) {
                     showLoaderDialog(context);
                   } else {
                     closeLoaderDialog(context);
                     if (state is AuthFailure) {
                       showSnackBar(context, state.message);
-                    }
-                    else if (state is AuthSuccess) {
+                    } else if (state is AuthSuccess) {
                       Navigator.pushAndRemoveUntil(
                           context, SplashScreen.route(), (route) => false);
                     }
@@ -110,29 +110,37 @@ class _SigninScreenState extends State<SigninScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            RichText(
-                                text: TextSpan(
-                              text: "Forgot Password",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall
-                                  ?.copyWith(
-                                      color: AppPalette.gradient1,
-                                      decoration: TextDecoration.underline),
-                            )),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context, ForgotPasswordScreen.route());
+                              },
+                              child: RichText(
+                                  text: TextSpan(
+                                text: "Forgot Password",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall
+                                    ?.copyWith(
+                                        color: AppPalette.gradient1,
+                                        decoration: TextDecoration.underline),
+                              )),
+                            ),
                           ],
                         ),
                         const SizedBox(
                           height: AppPadding.smallSpacer,
                         ),
-                        CustomButton(buttonText: "Sign In", onPressed: () {
-                            if (_signInFormKey.currentState!.validate()) {
+                        CustomButton(
+                            buttonText: "Sign In",
+                            onPressed: () {
+                              if (_signInFormKey.currentState!.validate()) {
                                 context.read<AuthBloc>().add(AuthSignIn(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
                                     ));
                               }
-                        }),
+                            }),
                         const SizedBox(
                           height: AppPadding.smallSpacer,
                         ),
@@ -143,18 +151,21 @@ class _SigninScreenState extends State<SigninScreen> {
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
-                         Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             // CustomButtonSocial(svgIcon: 'apple_logo.svg', onPressed: () {  },),
                             // const SizedBox(
                             //   width: AppPadding.miniSpacer,
                             // ),
-                            CustomButtonSocial(svgIcon: 'google_logo.svg', onPressed: () {  
-                              context
+                            CustomButtonSocial(
+                              svgIcon: 'google_logo.svg',
+                              onPressed: () {
+                                context
                                     .read<AuthBloc>()
                                     .add(AuthSignUpWithGoogle());
-                            },),
+                              },
+                            ),
                           ],
                         ),
                         const SizedBox(

@@ -43,6 +43,8 @@ class AuthRepositoryImpl implements AuthRepository {
     return _getUser(() async => await authRemoteDataSource.signUpWithApple());
   }
 
+
+
   ResultFuture<UserModel> _getUser(Future<UserModel> Function() fn) async {
     try {
       if (!await (connectionChecker.isConnected)) {
@@ -104,4 +106,33 @@ class AuthRepositoryImpl implements AuthRepository {
       return left(Failure(e.message));
     }
   }
+
+     @override
+  ResultFuture<void> forgotPassword({required String email})async {
+   try {
+      await authRemoteDataSource.forgotPassword(email: email);
+
+      return right(null);
+    } on AuthException catch (e) {
+      return left(Failure(e.message));
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+  
+  @override
+  ResultFuture<UserModel> forgotPasswordWithToken({required String email, required String password, required String token}) async{
+     try {
+
+      return _getUser(() async =>
+        await authRemoteDataSource.forgotPasswordWithToken(email: email, password: password, token: token));
+    
+    } on AuthException catch (e) {
+      return left(Failure(e.message));
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+ 
 }
