@@ -7,6 +7,7 @@ import 'package:rinavent/core/utils/show_snackbar.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
+import 'package:rinavent/features/auth/presentation/screens/test.dart';
 
 class ForgotPasswordWithTokenScreen extends StatefulWidget {
   final String email;
@@ -67,8 +68,8 @@ class _ForgotPasswordWithTokenScreenState
                     if (state is AuthFailure) {
                       showSnackBar(context, state.message);
                     } else if (state is AuthSuccess) {
-                      Navigator.pushReplacement(context, SigninScreen.route());
-                      showSnackBar(context, "An email has been sent");
+                      Navigator.pushReplacement(context, Test.route());
+                      showSnackBar(context, "Welcome back");
                     }
                   }
                 },
@@ -90,23 +91,30 @@ class _ForgotPasswordWithTokenScreenState
                           height: AppPadding.miniSpacer,
                         ),
                         Text(
-                          "Enter your Email ",
+                          "Get your OTP token from your email and enter a new password ",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
                         AuthField(
-                          hintText: "example@gmail.com",
-                          controller: emailController,
-                          title: 'Email',
-                          textInputType: TextInputType.emailAddress,
-                          codeKey: 2,
+                          hintText: "",
+                          controller: tokenController,
+                          title: 'Token',
+                          textInputType: TextInputType.text,
+                          codeKey: 4,
                         ),
-                     const SizedBox(
+                        // const SizedBox(
+                        //   height: AppPadding.miniSpacer,
+                        // ),
+                        // AuthField(
+                        //   hintText: "example@gmail.com",
+                        //   controller: emailController,
+                        //   title: 'Email',
+                        //   textInputType: TextInputType.emailAddress,
+                        //   codeKey: 2,
+                        // ),
+                        const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
                         AuthField(
@@ -117,15 +125,6 @@ class _ForgotPasswordWithTokenScreenState
                           textInputType: TextInputType.visiblePassword,
                           codeKey: 3,
                         ),
-                            const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        AuthField(
-                          hintText: "Borohoul Soguelni Malachie",
-                          controller: tokenController,
-                          title: 'Token',
-                          textInputType: TextInputType.name,
-                        ),
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
@@ -133,7 +132,9 @@ class _ForgotPasswordWithTokenScreenState
                             buttonText: "Reset Password",
                             onPressed: () {
                               if (_signInFormKey.currentState!.validate()) {
-                                context.read<AuthBloc>().add(AuthForgotPasswordWithToken(
+                                context
+                                    .read<AuthBloc>()
+                                    .add(AuthForgotPasswordWithToken(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),
                                       token: tokenController.text.trim(),
