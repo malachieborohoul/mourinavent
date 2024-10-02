@@ -123,28 +123,28 @@ class _SignupSreenState extends State<SignupSreen> {
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
-                        Row(
-                          children: [
-                            Checkbox(value: true, onChanged: (value) {}),
-                            RichText(
-                                text: TextSpan(
-                                    text: "Agree with ",
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                    children: [
-                                  TextSpan(
-                                    text: "Terms & Conditions",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(
-                                            color: AppPalette.gradient1,
-                                            decoration:
-                                                TextDecoration.underline),
-                                  )
-                                ]))
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     Checkbox(value: true, onChanged: (value) {}),
+                        //     RichText(
+                        //         text: TextSpan(
+                        //             text: "Agree with ",
+                        //             style:
+                        //                 Theme.of(context).textTheme.bodySmall,
+                        //             children: [
+                        //           TextSpan(
+                        //             text: "Terms & Conditions",
+                        //             style: Theme.of(context)
+                        //                 .textTheme
+                        //                 .titleSmall
+                        //                 ?.copyWith(
+                        //                     color: AppPalette.gradient1,
+                        //                     decoration:
+                        //                         TextDecoration.underline),
+                        //           )
+                        //         ]))
+                        //   ],
+                        // ),
                         const SizedBox(
                           height: AppPadding.miniSpacer,
                         ),
