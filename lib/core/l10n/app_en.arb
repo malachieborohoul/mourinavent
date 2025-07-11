@@ -1,0 +1,638 @@
+{
+  "@Splash_Screen_Screen": {},
+  "lbl_payway": "Payway",
+
+  "@Onboarding_One_Screen": {},
+  "lbl_make_it_simple": "Fast, Secure, and Easy",
+  "msg_money_transfer_generally":
+      "Transfer Money Across Borders with Confidence",
+
+  
+
+  "@Onboarding_Two_Screen": {},
+
+  "lbl_new_banking": "Simplified Money Transfers",
+  "msg_trends_in_this_report":
+      "Reliable and Affordable Cross-Border Transfers",
+
+  "@Onboarding_Three_Screen": {},
+
+  "lbl_get_started": "Get started",
+  "lbl_zero_fees": "Global Financial Solutions",
+  "msg_zero_fee_merchant":
+      "Send Money with Speed and Security",
+
+  "@Login_Screen_Error_Screen": {},
+
+  "msg_please_valid_your": "Please valid your email address",
+  "msg_please_valid_your2": "Please valid your password",
+
+  "@Forgot_Password?_Screen": {},
+
+  "lbl_forgot_password": "Forgot password",
+  "msg_type_your_email":
+      "Type your email, we will send you verification code via email",
+
+  "@Verify_Code_Screen": {},
+
+  "lbl_resend_code": "Resend code",
+  "lbl_verify_code": "Verify code",
+  "lbl_verify_now": "Verify now",
+  "msg_don_t_get_the_code": "Don’t get the code?",
+  "msg_the_confimation":
+      "The confimation code was sent to the number",
+  "msg_the_confimation2": "The confimation code was sent via email",
+
+  "@Reset_Password_One_Screen": {},
+
+  "lbl_reset_password": "Reset password",
+  "msg_create_your_new": "Create your new password to Login",
+
+  "@Reset_Password_Screen": {},
+
+  "lbl_ok": "Ok",
+  "msg_password_changed": "Password changed!",
+  "msg_your_password_has":
+      "Your password has been changed successfully use your new password to login",
+
+
+  "@Country_Of_Residence_Screen": {},
+
+  "lbl_deutsch": "Deutsch",
+  "lbl_england": "England",
+  "lbl_french": "French",
+  "lbl_germany": "Germany",
+  "lbl_italian": "Italian",
+  "lbl_russian": "Russian",
+  "msg_country_of_residence": "Country of residence",
+  "msg_the_terms_and_services":
+      "The terms and services which apply to you, will depend on your country of residence",
+
+  "@Create_Pin_Screen": {},
+
+  "lbl_create_pin": "Create pin",
+  "msg_enter_a_pin_number":
+      "Enter a pin number to make your wallet more secure",
+
+ "@Identity_Verify_Popup_Screen": {},
+  
+  "lbl_verify_identity": "Verify identity",
+  "msg_let_s_verify_your": "Let’s verify your identity!",
+  "msg_we_are_required":
+      "We are required to verify your identity before you can use the service. Your information will be encrypted and stored securely.",
+
+  "@Proof_Of_Residency_Screen": {},
+  "lbl_change": "Change",
+  "lbl_identity_card": "Identity card",
+  "lbl_issued_in_india": "Issued in india",
+  "lbl_passport": "Passport",
+  "msg_method_of_verification": "Method of verification",
+  "msg_my_info_digital": "My info digital document",
+  "msg_proof_of_residency": "Proof of residency",
+
+  "@Photo_ID_Card_Screen": {},
+
+  "lbl_photo_id_card": "Photo ID Card",
+
+  "@Selfie_With_ID_Card_Screen": {},
+  "lbl_retake": "Retake",
+  "msg_please_look_at_the": "Please look at the camera and hold still",
+  "msg_selfie_with_id_card": "Selfie with ID card",
+
+  "@Home_Card_Slider_Screen": {},
+  "lbl_add_new_card": "Add new card", 
+  "lbl_no_cards_saved": "No cards saved!",
+  "lbl_no_transfers_available": "No Transfers available!",
+
+  "@Notification_Empty_Screen": {},
+  "msg_no_notifications": "No notifications yet",
+  "msg_we_did_not_found":
+      "We did not found any notification ‘lets start exploring",
+
+  "@Notification_Screen": {},
+  "lbl_10_min_ago": "10 Min ago",
+  "lbl_1_min_ago": "1 Min ago",
+  "lbl_20_min_ago": "20 Min ago",
+  "lbl_2_min_ago": "2 Min ago",
+  "lbl_30_min_ago": "30 Min ago",
+  "lbl_40_min_ago": "40 Min ago",
+  "lbl_4_min_ago": "4 Min ago",
+  "lbl_just_now": "Just now",
+  "lbl_hour": "hour",
+  "lbl_day": "day",
+  "msg_airplane_mode_is": "Airplane mode is on either system or lo.",
+  "msg_airplane_mode_is2": "Airplane mode is on either system or.",
+  "msg_clicking_the_allow": "Clicking the allow button online is trouble.",
+  "msg_detecting_if_someone": "Detecting if someone reading  messages.",
+  "msg_dubious_websites": "Dubious websites functionality for bell.",
+  "msg_how_to_disable_push": "How to disable push notification android.",
+  "msg_in_a_laoreet_purus": "In a laoreet purus Integer turpis laoreet.",
+  "msg_the_trend_shows": "The trend shows that these attacks are.",
+  "msg_websites_ask_for": "Websites ask for permission upon show.",
+
+  "@Scan_QR_to_Ride_Screen": {},
+  "lbl_scan_qr_code": "Scan QR code",
+
+  "@Share_Popup_Screen": {},
+  "lbl_copy": "Copy",
+  "lbl_facebook": "Facebook",
+  "lbl_instagram": "Instagram",
+  "lbl_linkedin": "Linkedin",
+  "lbl_share": "Share ",
+  "lbl_snapchat": "Snapchat",
+  "lbl_watsapp": "Watsapp",
+  "msg_https_demo_dsrr": "https://demo.//dsrr",
+
+  "@Topup_Success_Screen": {},
+  "lbl_topup_success": "Topup success",
+  "msg_has_been_added_to": "Has been added to your Jazopay\nCard Balance.",
+
+  "@Confirm_Screen": {},
+  "lbl_withdraw_to": "Withdraw to",
+
+  "@Withdrawal_Success_Screen": {},
+
+  "msg_withdrawal_success": "Withdrawal success!",
+
+  "@Details_Screen": {},
+  "lbl_jan_26_2021": "Jan 26, 2021", "lbl_trasnfer_date": "Trasnfer date",
+
+  "@Transfer_Screen": {},
+  "lbl_02_6727_8247": "(02) 6727 8247",
+  "lbl_03_5398_1914": "(03) 5398 1914",
+  "lbl_03_9050_5960": "(03) 9050 5960",
+  "lbl_all_people": "Recipients",
+  "lbl_ameer_harb": "Ameer Harb",
+  "lbl_atif_sayyar": "Atif Sayyar",
+  "lbl_dhakwan_ghanem": "Dhakwan Ghanem",
+  "lbl_mazin_attia": "Mazin Attia",
+  "lbl_muti_issa": "Muti Issa",
+  "lbl_nashwan": "Nashwan",
+  "lbl_qusay_thabit": "Qusay Thabit",
+  "lbl_sahl_touma": "Sahl Touma",
+  "lbl_sariyah_sa": "Sariyah Sa",
+  "lbl_search": "Search",
+  "lbl_transfer2": "Transfer ",
+  "lbl_ubaida_bit": "Ubaida Bit",
+  "msg_recent_transfers": "Recent transfers",
+
+  "@Cancel_Payment_Screen": {},
+  "lbl_back_to_home": "Back to home",
+  "lbl_opps": "Opps!",
+  "msg_something_went_wrong":
+      "Something went wrong. Please try again or contact the support team.",
+
+  "@Transfers_Screen": {},
+  "lbl_transfers2": "Transfers",
+  "lbl_no_transfers_made":"No transfers have been made ",
+
+
+  "@Transfers_Details_Screen": {},
+  "msg_transfers_details": "Transfers details",
+  "lbl_amount_to_send": "Amount to send",
+  "lbl_amount_receivable": "Amount receivable",
+
+
+  "@Deposits_Current_Deposit_Screen": {},
+  "lbl_20": "20%",
+  "lbl_8": "8%",
+  "msg_feb_30_2011_apr": "Feb 30, 2011 - Apr 16, 2030",
+  "msg_jan_30_2012_may": "Jan 30, 2012 - May 20, 2040",
+  "msg_jan_5_2010_may": "Jan 5, 2010 - May 15, 2020",
+  "msg_sep_30_2022_mar": "Sep 30, 2022 - Mar 23, 2010",
+
+  "@Deposits_Current_Deposit_Tab_Container_Screen": {},
+  "lbl_current_money": "Outflows",
+  "msg_current_deposits": "Entries",
+
+  "@Deposits_Current_Money_Screen": {},
+  "lbl_1300_00": "1300.00", 
+  "lbl_250_00": "250.00", 
+  "lbl_fridge": "Fridge",
+  "lbl_mobile": "Mobile", 
+  "msg_laptop_nothing_powar": "Laptop nothing powar",
+
+  "@Open_Deposits_Screen": {},
+  "lbl_open_deposit": "Open deposit", "lbl_open_deposits": "Open deposits",
+  "msg_early_deposit_withdrawal": "Early deposit withdrawal",
+  "msg_please_enter_expiry_date" : "Please enter an expiry date.",
+  "msg_invalid_expiry_date_format": "Invalid date format. Use MM/YY.",
+  "msg_invalid_expiry_date": "Invalid expiry date",
+  "msg_invalid_month": "The month must be between 01 and 12",
+  "msg_expiry_date_in_past": "The expiry date has already passed.",
+  "msg_top_up_amount_less": "You cannot top up an amount of less than ",
+  "msg_top_up_amount_greater": "You cannot recharge an amount greater than ",
+
+  "@Deposit_Created_Popup_Screen": {},
+  "msg_deposit_created": "Deposit created!",
+  "msg_your_deposit_has": "Your deposit has been created\nsuccessfully!",
+
+  "@Open_Money_Bank_Screen": {},
+  "lbl_50_usd_per_day": "50 USD per day",
+  "lbl_amout_achieve": "Amout achieve",
+  "lbl_open_money_bank": "Open money bank",
+  "lbl_your_goal": "Your goal",
+  "msg_choose_installment": "Choose installment",
+  "msg_rounding_up_to_1": "Rounding up to 1 per transfer",
+  "msg_rounding_up_to_10": "Rounding up to 10 per transfer ",
+
+  "@Money_Bank_Created_Popup_Two_Screen": {},
+  "msg_money_bank_created": "Money bank created!",
+  "msg_your_money_bank": "Your money bank has been created\nsuccessfully!",
+
+  "@Statistic_Income_Tab_Container_Screen": {},
+  "lbl_expenses": "Expenses", "lbl_income": "Income",
+
+  "@Time_Popup_Screen": {},
+  "lbl_days": "Days", "lbl_month": "Month", "lbl_year": "Year",
+
+  "@Loans_Screen": {},
+  "lbl_20_month": "20 Month",
+  "lbl_21": "21%",
+  "lbl_24_month": "24 Month",
+  "lbl_2500_00": "2500.00",
+  "lbl_25_month": "25 Month",
+  "lbl_3500_00": "3500.00",
+  "lbl_loans": "Loans",
+  "lbl_monthly_payment": "Monthly payment",
+  "lbl_perioud": "Perioud",
+  "lbl_rate": "Rate",
+  "lbl_total_period": "Total period",
+
+  "@New_Loan_Screen": {},
+  "lbl_open_new_loan": "Open new loan",
+  "msg_enter_monthly_repayment": "Enter monthly repayment",
+
+  "@New_Loan_Success_Popup_Screen": {},
+  "msg_application_submited": "Application submited!",
+  "msg_your_loan_application":
+      "Your loan application was successfully\nsubmited!",
+
+  "@Repay_Success_Popup_Screen": {},
+  "lbl_repay_success": "Repay success",
+  "msg_has_been_added_to2": "Has been added to your repay money\nsuccessfull.",
+
+  "@Guest_Profile_Screen": {},
+  "lbl_guest_profile": "Guest profile",
+
+  "@Edit_Profile_Screen": {},
+  "lbl_edit_profile": "Edit profile",
+
+  "@Security_Screen": {},
+  "lbl_face_id": "Face ID",
+
+  "@About_Us_Screen": {},
+  "msg_amet_minim_mollit":
+      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+  "msg_amet_minim_mollit2":
+      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. ",
+  "msg_how_do_i_add_money": "How do I add money to my Pay Tel account?",
+  "msg_in_a_laoreet_purus2":
+      "In a laoreet purus. Integer turpis quam, laoreet id orci nec, ultrices lacinia nunc. Aliquam erat volutpat. Curabitur fringilla in purus eget egestas. Etiam quis.",
+  "msg_ivorem_ipsum_dolor":
+      "IVorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. ",
+  "msg_lorem_ipsum_dolor":
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. ",
+
+  "@Help_Screen": {},
+  "msg_can_you_refund_on": "Can you refund on PayPal?",
+  "msg_how_do_i_get_a_refund": "How do I get a refund from cash?",
+  "msg_how_does_paytel": "How does Paytel messaging work?",
+  "msg_is_video_call_risky": "Is video call risky?",
+  "msg_is_we_transfer_free": "Is we transfer free?",
+  "msg_lorem_ipsum_dolor2":
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "msg_which_video_calls": "Which video calls are safe?",
+  "msg_will_paypal_refund": "Will PayPal refund money scammed?",
+
+  "@Feedback_Screen": {},
+  "msg_write_your_feedback": "Write your feedback...",
+
+  "@Feedback_One_Screen": {},
+  "msg_your_feedback_submitted": "Your feedback submitted",
+  "msg_your_review_has": "Your review has been submitted \nsuccessfully.",
+
+  "@Privacy_Policy_Screen": {},
+  "msg_disclosure_of_your": "Disclosure of your data",
+  "msg_lorem_ipsum_dolor3":
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec ac odio tempor orci dapibus ultrices in iaculis lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec ac odio tempor orci dapibus ultrices in iaculis Ac auctor augue mauris augue neque gravida. Velit ut tortor pretium viverra suspendisse. Volutpat commodo sed egestas egestas fringilla phasellus faucibus. ",
+  "msg_torem_ipsum_dolor":
+      "Torem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum ",
+  "msg_types_of_data_we": "Types of data we collect",
+  "msg_use_of_your_personal": "Use of your personal data",
+
+  "@Terms_&_Conditions_Screen": {},
+  "msg_by_submitting": "By submitting this form, you agree with",
+  "msg_conditions_of_uses": "Conditions of Uses",
+  "msg_it_is_a_long_established":
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. \n\nMany desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+  "msg_last_update_27_12_2023": "Last update: 27/12/2023",
+  "msg_please_read_these":
+      "Please read these terms of service, carefully before using our app operated by us.",
+
+  "@Logout_Popup_Screen": {},
+  "lbl_yes_logout": "Yes’ logout",
+  "msg_are_you_sure_you": "Are you sure you want to logout?",
+
+  "@Common_String": {},
+  "lbl_00": "|.00",
+  "lbl_00_00": "00.00",
+  "lbl_02_9378_5922": "(02) 9378 5922",
+  "lbl_0333_050_4358": "0333 050 4358",
+  "lbl_10": "10",
+  "lbl_100_00": "100.00",
+  "lbl_102": "10%",
+  "lbl_10_00": "10|.00",
+  "lbl_10_0002": "10.000",
+  "lbl_10_000_00": "10,000.00",
+  "lbl_120_00": "120.00",
+  "lbl_123_00": "123.00",
+  "lbl_125412154123": "125412154123",
+  "lbl_145214521452": "145214521452",
+  "lbl_15": "15%",
+  "lbl_1k": "1K",
+  "lbl_2000_00": "2000.00",
+  "lbl_200_00": "200.00",
+  "lbl_20_00": "20.00",
+  "lbl_20_000_00": "20,000.00",
+  "lbl_213_00": "213.00",
+  "lbl_256365214214": "256365214214",
+  "lbl_2k": "2K",
+  "lbl_3000_00": "3000.00",
+  "lbl_300_00": "300.00",
+  "lbl_32_000": "32.000",
+  "lbl_3k": "3K",
+  "lbl_4000_00": "4000.00",
+  "lbl_400_00": "400.00",
+  "lbl_450_00": "450.00",
+  "lbl_4k": "4K",
+  "lbl_500_00": "500.00",
+  "lbl_50_000_00": "50,000.00",
+  "lbl_52_00": "52.00",
+  "lbl_587412266542": "587412266542",
+  "lbl_600_00": "600.00",
+  "lbl_about_us": "About us",
+  "lbl_abram": "Abram",
+  "lbl_add": "Add",
+  "lbl_add_card": "Add card",
+  "lbl_add_note": "Add note",
+  "lbl_add_reason": "Add reason",
+  "lbl_card_created": "Card created!",
+  "lbl_card_number": "Card number",
+  "lbl_change_password": "Change password",
+  "lbl_confirm": "Confirm",
+  "lbl_confirm_payment": "Confirm payment",
+  "lbl_continue": "Continue",
+  "lbl_cvv": "CVV",
+  "lbl_default_card": "Default card",
+  "lbl_deposite": "Deposite",
+  "lbl_deposits": "Deposits",
+  "lbl_details": "Details",
+  "lbl_done": "Done",
+  "lbl_download_print": "Download print",
+  "lbl_email_address": "Email address",
+  "lbl_email": "Email",
+  "lbl_phone_number": "Phone Number",
+  "lbl_enter_amout": "Enter amout",
+  "lbl_enter_your_pin": "Enter your pin",
+  "lbl_expiray_date": "Expiray date",
+  "lbl_feedback": "Feedback",
+  "lbl_first_name": "First name",
+  "lbl_fri": "Fri",
+  "lbl_help": "Help",
+  "lbl_home": "Home",
+  "lbl_indonesia": "Indonesia",
+  "lbl_jane_cooper": "Jane cooper",
+  "lbl_john": "John",
+  "lbl_john_abram": "John abram",
+  "lbl_john_abram2": "John Abram",
+  "lbl_last_name": "Last name",
+  "lbl_loan": "Loan",
+  "lbl_loan_deposite": "Loan deposite",
+  "lbl_log_in": "Log in",
+  "lbl_logout": "Logout",
+  "lbl_mon": "Mon",
+  "lbl_money_bank": "Money bank",
+  "lbl_mood_swings": "Mood swings",
+  "lbl_my_profile": "My profile",
+  "lbl_new_loan": "New loan",
+  "lbl_new_password": "New password",
+  "lbl_next": "Next",
+  "lbl_notifications": "Notifications",
+  "lbl_password": "Password",
+  "lbl_payment_with": "Payment with",
+  "lbl_privacy_policy": "Privacy policy",
+  "lbl_profile": "Profile",
+  "lbl_razor_bank": "Razor bank",
+  "lbl_recipient": "Recipient",
+  "lbl_repay": "Repay",
+  "lbl_restlessness": "Restlessness",
+  "lbl_sat": "Sat",
+  "lbl_save": "Save",
+  "lbl_scan": "Scan ",
+  "lbl_security": "Security",
+  "lbl_see_details": "See details",
+  "lbl_select_bank": "Select bank",
+  "lbl_select_card": "Select card",
+  "lbl_select_currency": "Select currency",
+  "lbl_send_from": "Send from",
+  "lbl_settings": "Settings",
+  "lbl_sign_up": "Sign up",
+  "lbl_skip": "Skip",
+  "lbl_sleeping": "Sleeping",
+  "lbl_spending": "Spending",
+  "lbl_statistic": "Statistic",
+  "lbl_submit": "Submit",
+  "lbl_sun": "Sun",
+  "lbl_this_week": "This week",
+  "lbl_thu": "Thu",
+  "lbl_to_jane_cooper": "To: Jane cooper",
+  "lbl_today_1_20_pm": "Today, 1:20 Pm",
+  "lbl_top_up": "Top up",
+  "lbl_topup_amout": "Topup amout",
+  "lbl_total": "Total",
+  "lbl_total_balance": "Total balance",
+  "lbl_tranfer_to": "Tranfer to",
+  "lbl_transfer_id": "Transfer ID",
+  "lbl_transfers": "Transfers ",
+  "lbl_transfer": "Transfer",
+  "lbl_transfer_amount": "Transfer amount",
+  "lbl_transfer_fees": "Transfer fees",
+  "lbl_fees": "Fees",
+
+  "lbl_exchange_rates": "Exchange rates",
+  "lbl_total_recipient": "Total for the recipient",
+
+  "lbl_transfer_to": "Transfer to",
+  "lbl_trouble": "Trouble",
+  "lbl_tue": "Tue",
+  "lbl_view_all": "View all",
+  "lbl_wed": "Wed",
+  "lbl_week": "Week",
+  "lbl_welcome": "Welcome",
+  "lbl_welcome_back": "Welcome back!",
+  "lbl_withdraw": "Withdraw",
+  "lbl_withdraw_amout": "Withdraw amount",
+  "lbl_withdraw_fees": "Withdraw fees",
+
+  "lbl_withdraw_atm": "Withdraw ATM",
+  "lbl_withdrawal": "Withdrawal",
+  "msg_20_march_2_10_am": "20 March, 2:10 Am",
+  "msg_2541": "**** **** **** 2541",
+  "msg_2564": "**** **** **** 2564",
+  "msg_4_january_4_00": "4 January, 4:00 Am",
+  "msg_adnanomran_gmail_com": "adnanomran@gmail.com",
+  "msg_card_holder_name": "Card holder name",
+  "msg_confirm_password": "Confirm password",
+  "msg_enter_a_pin_number2": "Enter a pin number to make your card more secure",
+  "msg_financial_transfer": "Financial transfer",
+  "msg_forgot_password": "Forgot password?",
+  "msg_from_adnan_omran": "From: Adnan omran",
+  "msg_from_john_abram": "From: John abram",
+  "msg_janecooper_gmail_com": "janecooper@gmail.com",
+  "msg_jazopay_card_has": "Jazopay card has been created\nsuccessfully!",
+  "msg_johnabram_gmail_com": "johnabram@gmail.com",
+  "msg_nicotine_cravings": "Nicotine cravings",
+  "msg_please_enter_pin": "Please enter PIN to confirm payment",
+  "msg_select_deposite": "Select deposite perioud",
+  "msg_terms_conditions": "Terms & conditions",
+  "msg_to_wajih_taysir": "To: Wajih taysir",
+  "msg_transfer_details": "Transfer details",
+  "msg_transfer_success": "Transfer success",
+  "msg_upi_transfer": "UPI transfer ID",
+  "msg_wajih_taysir_handal": "Wajih Taysir Handal",
+  "msg_wajihtaysir_gmail_com": "wajihtaysir@gmail.com",
+  "msg_your_money_has_been": "Your money has Been transfered \nsuccessfully!",
+
+    "@Network_Error_String": {},
+  "msg_network_err": "Network Error",
+  "msg_something_went_wrong": "Something Went Wrong!",
+
+	"@Validation_Error_String": {},
+  "err_msg_please_enter_valid_email": "Please enter valid email",
+  "err_msg_please_enter_valid_password": "Please enter valid password",
+  "err_msg_please_enter_valid_text": "Please enter valid text",
+  "err_msg_please_enter_valid_number": "Please enter valid number",
+
+
+   "@Settings_Screen": {},
+  "lbl_language": "Language",
+
+    "@Language_Screen": {},
+
+  "lbl_lg_english": "English",
+  "lbl_lg_french": "French",
+
+   "@Input_Validators": {},
+
+  "ipt_val_email_empty": "The e-mail address is required to continue. Please enter it.",
+  "ipt_val_email": "The e-mail address seems incorrect. Make sure it contains an '@' and a valid domain (e.g. exemple@domaine.com).",
+  "ipt_val_email_login": "Invalid e-mail address. Check that it is correctly formatted ",
+
+  "ipt_val_password_empty": "Please enter a valid Password.",
+  "ipt_val_password": "Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.",
+  
+  "ipt_val_firstName_empty": "This field is mandatory. Please enter your first name",
+  "ipt_val_firstName_min_length": "The first name must contain at least 2 characters",
+  "ipt_val_firstName_max_length": "The first name must not exceed 50 characters",
+  "ipt_val_firstName": "Only letters, spaces, hyphens or apostrophes are allowed.",
+
+   "ipt_val_lastName_empty": "This field is mandatory. Please enter your last name",
+  "ipt_val_lastName_min_length": "The last name must contain at least 2 characters",
+  "ipt_val_lastName_max_length": "The last name must not exceed 50 characters",
+
+  "ipt_val_otp_empty": "Please enter a valid code",
+
+   "@Phone_Input_Field": {},
+
+  "phone_ipt_searchText": "Search country",
+  "phone_ipt_invalidNum": "Invalid Mobile Number",
+
+  "@Registration_Success": {},
+
+  "msg_registration_success_title": "Registration Complete",
+  "msg_registration_success_desc": "Your account has been successfully created",
+  "msg_registration_success_button": "Continue to login",
+
+  "@Login_Failure": {},
+
+  "msg_login_failure": "Invalid login credentials",
+
+  "no_internet_connection":"No internet connection",
+  "msg_session_expired":"Please log in, your session has expired",
+
+  "@Sign_In": {},
+  "lbl_already_have_account":"Already have an account?",
+  "lbl_dont_have_account":"Don't have an account?",
+  "lbl_let_get_started":"Let's get started",
+  
+
+  "@ERRORS": {},
+  "lbl_oops_something_went_wrong":"Oops, something went wrong !",
+  "lbl_please_try_again":"Please try again in a few seconds.",
+  "lbl_try_again":"Try again",
+
+   "@Gateway": {},
+  "lbl_payment_gateway":"Payment gateway",
+  "msg_please_choose_gateway":"Please choose the payment gateway you would like to use for your transfer.",
+
+  "@Deposits": {},
+  "lbl_no_deposits_made":"No deposits have been made ",
+  "lbl_status":"Status",
+  "lbl_deposits_amount": "Deposit amount",
+
+  "lbl_deposits_fees": "Deposit fees",
+
+  "msg_please_enter_amount":"Please enter amount ",
+  "msg_please_enter_card_number":"Please enter card number ",
+  "msg_please_enter_expiry_date":"Please enter Expiry date ",
+  "msg_please_enter_ccv":"Please enter CVV code ",
+  "msg_please_holder_name":"Please enter Card holder name",
+  "msg_transaction_processed": "Your transaction is being processed. You will receive a notification once it has been finalized",
+  "msg_treatment_in_progress": "Treatment in progress",
+
+  "@Transaction_Status": {},
+  "lbl_delivered": "Delivered",
+  "lbl_pending": "Pending",
+  "lbl_rejected": "Rejected",
+
+  "@Sign_In": {},
+  "msg_successful_registration": "Successful registration!",
+  "msg_registration_now_complete": "Your account has been successfully created. Please check your mailbox and click on the validation link to activate your account. 📩",
+  "msg_username_or_email_already_exists": "This phone number or email is already in use. Please choose another one.",
+  "msg_account_not_verified": "Your account is not verified. Check your e-mails to confirm your account.",
+
+
+   "@Error_Handling": {},
+    "msg_error_occurred": "An error has occurred",
+    "msg_balance_insufficient": "Your balance is insufficient",
+    "lbl_loading": "Loading",
+
+  "@Withdraw_Screen": {},
+  "lbl_no_withdrawals_made":"No withdrawals have been made ",
+  "msg_withdraw_amount_less": "You cannot withdraw an amount of less than ",
+  "msg_withdraw_amount_greater": "You cannot withdraw an amount greater than ",
+
+  "@KYC_Verification_Screen": {},
+  "lbl_select_image":"Select your image ",
+  "lbl_verify_your_identity":"Verify Your Identity for Secure Access ",
+  "lbl_upload_photo_id":"Upload a clear photo of your ID or take a picture to complete your KYC verification and unlock full access.",
+  "lbl_kyc_verification_successful":"✅ KYC Verification Successful! ",
+  "lbl_identity_verified":"Congratulations! Your identity has been successfully verified. You now have full access to our services. 🚀 ",
+  "lbl_kyc_verification_required":"KYC verification required",
+  "lbl_kyc_verify_identity":"For security reasons, we need to verify your identity before proceeding."
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+}

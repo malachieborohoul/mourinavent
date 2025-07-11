@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rinavent/core/common/widgets/custom_button.dart';
-import 'package:rinavent/core/contants/padding.dart';
+import 'package:rinavent/core/l10n/app_localizations.dart';
+import 'package:rinavent/core/presentation/widgets/custom_elevated_button.dart';
+import 'package:rinavent/core/presentation/widgets/custom_text_form_field.dart';
+import 'package:rinavent/core/theme/theme_helper.dart';
 import 'package:rinavent/core/utils/loader_dialog.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
+import 'package:rinavent/core/utils/size_utils.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:rinavent/core/common/widgets/auth_field.dart';
-import 'package:rinavent/features/auth/presentation/screens/signin_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/test.dart';
+import 'package:rinavent/features/auth/presentation/validators/input_validators.dart';
 
 class ForgotPasswordWithTokenScreen extends StatefulWidget {
   final String email;
@@ -51,6 +53,8 @@ class _ForgotPasswordWithTokenScreenState
 
   @override
   Widget build(BuildContext context) {
+    var appLocalization = AppLocalizations.of(context);
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SafeArea(
@@ -58,7 +62,8 @@ class _ForgotPasswordWithTokenScreenState
           appBar: AppBar(),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppPadding.appPadding),
+                               padding:
+                          EdgeInsets.only(left: 20.h,top: 24.v ),
               child: BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
                   if (state is AuthLoading) {
@@ -80,30 +85,28 @@ class _ForgotPasswordWithTokenScreenState
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: AppPadding.smallSpacer,
-                        ),
+                                                                SizedBox(height: 24.v),
+
                         Text(
                           "Forgot Password",
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
+                                                                SizedBox(height: 24.v),
+
                         Text(
                           "Get your OTP token from your email and enter a new password ",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        AuthField(
-                          hintText: "",
-                          controller: tokenController,
-                          title: 'Token',
-                          textInputType: TextInputType.text,
-                          codeKey: 4,
-                        ),
+                                                                SizedBox(height: 24.v),
+
+                          CustomTextFormField(
+                      textInputType: TextInputType.emailAddress,
+                      controller: emailController,
+                      hintText: appLocalization!.lbl_email_address,
+                      hintStyle: theme.textTheme.bodyLarge!,
+                      validator: (value) => InputValidators.lastNameValidator(
+                          value, appLocalization),
+                    ),
                         // const SizedBox(
                         //   height: AppPadding.miniSpacer,
                         // ),
@@ -114,36 +117,20 @@ class _ForgotPasswordWithTokenScreenState
                         //   textInputType: TextInputType.emailAddress,
                         //   codeKey: 2,
                         // ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        AuthField(
-                          hintText: "***************",
-                          controller: passwordController,
-                          title: 'Password',
-                          isPassword: true,
-                          textInputType: TextInputType.visiblePassword,
-                          codeKey: 3,
-                        ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        CustomButton(
-                            buttonText: "Reset Password",
-                            onPressed: () {
-                              if (_signInFormKey.currentState!.validate()) {
-                                context
-                                    .read<AuthBloc>()
-                                    .add(AuthForgotPasswordWithToken(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                      token: tokenController.text.trim(),
-                                    ));
-                              }
-                            }),
-                        const SizedBox(
-                          height: AppPadding.smallSpacer,
-                        ),
+                       
+                                                                  SizedBox(height: 24.v),
+
+                        CustomElevatedButton(
+                              text: "Reset Password",
+                              onPressed: () {
+                                if (_signInFormKey.currentState!.validate()) {
+                                  context.read<AuthBloc>().add(AuthForgotPassword(
+                                        email: emailController.text.trim(),
+                                      ));
+                                }
+                              }),
+                                                                SizedBox(height: 24.v),
+
                       ],
                     ),
                   );

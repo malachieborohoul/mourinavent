@@ -4,8 +4,7 @@ final serviceLocator = GetIt.instance;
 
 Future<void> initDependencies() async {
   _initAuth();
-  _initCategory();
-  _initUserProfile();
+
   final supabase = await Supabase.initialize(
     url: AppSecrets.supabaseUrl,
     anonKey: AppSecrets.supabaseAnonKey,
@@ -46,11 +45,11 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
-    ..registerFactory<AuthLocalDatasource>(
-      () => AuthLocalDatasourceImpl(
-        serviceLocator(),
-      ),
-    )
+    // ..registerFactory<AuthLocalDatasource>(
+    //   () => AuthLocalDatasourceImpl(
+    //     serviceLocator(),
+    //   ),
+    // )
 
     // Repository
     ..registerFactory<AuthRepository>(
@@ -117,73 +116,4 @@ void _initAuth() {
         userForgotPasswordWithToken: serviceLocator(),
       ),
     );
-}
-
-void _initCategory() {
-  //Datasource
-
-  serviceLocator
-    ..registerFactory<CategoryRemoteDatasource>(
-      () => CategoryRemoteDatasourceImpl(
-        serviceLocator(),
-      ),
-    )
-
-    // Repository
-    ..registerFactory<CategoryRepository>(
-      () => CategoryRepositoryImpl(
-        serviceLocator(),
-      ),
-    )
-
-    //Usecases
-    ..registerFactory(
-      () => GetCategories(
-        serviceLocator(),
-      ),
-    )
-
-    //Bloc
-    ..registerLazySingleton(
-      () => CategoryBloc(
-        getCategories: serviceLocator(),
-      ),
-    );
-}
-
-void _initUserProfile() {
-  //Datasource
-
-  serviceLocator
-    ..registerFactory<UserProfileRemoteDatasource>(
-      () => UserProfileRemoteDatasourceImpl(
-        serviceLocator(),
-      ),
-    )
-
-    // Repository
-    ..registerFactory<UserProfileRepository>(
-      () => UserProfileRepositoryImpl(
-        serviceLocator(),
-      ),
-    )
-
-    //Usecases
-    ..registerFactory(
-      () => CompleteUserProfile(
-        serviceLocator(),
-      ),
-    )
-
-    //Bloc
-    ..registerLazySingleton(
-      () => UserProfileBloc(
-          completeUserProfile: serviceLocator(),
-          appUserCubit: serviceLocator()),
-    );
-
-  //Cubit
-  serviceLocator.registerLazySingleton(
-    () => CompleteUserProfileCubit(),
-  );
 }

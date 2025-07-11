@@ -1,4 +1,4 @@
-import 'package:rinavent/core/common/entities/user.dart';
+import 'package:rinavent/core/domain/entities/user.dart';
 import 'package:rinavent/core/usecase/usecase.dart';
 import 'package:rinavent/core/utils/typedef.dart';
 import 'package:rinavent/features/auth/domain/repositories/auth_repository.dart';

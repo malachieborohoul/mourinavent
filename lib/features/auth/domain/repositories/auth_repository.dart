@@ -1,5 +1,5 @@
+import 'package:rinavent/core/domain/entities/user.dart';
 import 'package:rinavent/core/utils/typedef.dart';
-import 'package:rinavent/core/common/entities/user.dart';
 
 abstract interface class AuthRepository {
   ResultFuture<User> signUp({

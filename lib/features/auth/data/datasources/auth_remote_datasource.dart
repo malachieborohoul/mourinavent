@@ -55,7 +55,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final user = response.user;
 
       if (user == null) {
-        throw const ServerException('User is null');
+        throw ServerException('User is null');
       }
 
       final userData =
@@ -84,17 +84,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       });
       final user = response.user;
       if (user == null) {
-        throw const ServerException('User is null');
+        throw  ServerException('User is null');
       }
 
       // Vérify user identities exists
       if (user.identities != null && user.identities!.isEmpty) {
-        throw const ServerException('Email already exists');
+        throw  ServerException('Email already exists');
       }
 
       // identities exist Confirm email
       if (user.identities != null && user.identities!.isNotEmpty) {
-        throw const ServerException('Confirm email');
+        throw  ServerException('Confirm email');
       }
 
       return UserModel.fromMap(user.toJson());
@@ -111,7 +111,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       // Étape 1: Authentification via Google
       final googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
-        throw const ServerException("Failed to sign in with Google.");
+        throw  ServerException("Failed to sign in with Google.");
       }
       final googleAuth = await googleUser.authentication;
 
@@ -125,7 +125,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
       if (user == null) {
         //Failed to get user from Supabase.
-        throw const ServerException("User is null");
+        throw  ServerException("User is null");
       }
 
       // // identities exist Confirm email
@@ -156,7 +156,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       // final accessToken = appleCredential.authorizationCode;
 
       if (idToken == null) {
-        throw const ServerException('No ID Token found.');
+        throw  ServerException('No ID Token found.');
       }
 
       // Étape 2: Utiliser Supabase pour s'authentifier avec le token d'Apple
@@ -169,7 +169,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final user = response.user;
 
       if (user == null) {
-        throw const ServerException('Failed to get user from Supabase.');
+        throw  ServerException('Failed to get user from Supabase.');
       }
 
       return UserModel.fromMap(user.toJson());
@@ -234,7 +234,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
                     final user = response.user;
 
       if (user == null) {
-        throw const ServerException('User is null');
+        throw  ServerException('User is null');
       }
 
       final userData =

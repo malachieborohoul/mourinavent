@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rinavent/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:rinavent/core/common/entities/user.dart';
+import 'package:rinavent/core/domain/entities/user.dart';
 import 'package:rinavent/features/auth/domain/usecases/current_user.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_apple.dart';
 import 'package:rinavent/features/auth/domain/usecases/sign_up_with_google.dart';

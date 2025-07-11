@@ -1,6 +1,8 @@
 class ServerException implements Exception {
   final String message;
-  const ServerException(this.message);
+  final String errorCode;
+  final String error;
+   ServerException(this.message, [this.errorCode = "", this.error=""] );
 
   @override
   String toString() {

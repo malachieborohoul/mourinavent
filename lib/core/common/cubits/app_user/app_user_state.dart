@@ -8,6 +8,7 @@ sealed class AppUserState extends Equatable {
 }
 
 final class AppUserInitial extends AppUserState {}
+final class AppUserLoading extends AppUserState {}
 
 
 final class AppUserLoggedIn extends AppUserState {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rinavent/core/contants/constants.dart';
-import 'package:rinavent/core/theme/app_palette.dart';
+
+import 'package:rinavent/core/theme/theme_helper.dart';
+import 'package:rinavent/core/utils/image_constant.dart';
 
 class CustomButtonSocial extends StatelessWidget {
   final String svgIcon;
@@ -15,18 +16,19 @@ class CustomButtonSocial extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-          color: AppPalette.backgroundColor,
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(size),
-          border: Border.all(color: AppPalette.borderColor, width: 1)),
+          border: Border.all(color: ColorSchemes
+                                            .primaryColorScheme.primary, width: 1)),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppPalette.transparentColor,
-          shadowColor: AppPalette.transparentColor,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
           padding: EdgeInsets.zero,
         ),
         onPressed: onPressed,
         child: SvgPicture.asset(
-          Constants.assetImg + svgIcon,
+          '${ImageConstant.imagePath}/svgIcon',
           fit: BoxFit.none,
         ),
       ),

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rinavent/core/common/widgets/custom_button.dart';
-import 'package:rinavent/core/contants/padding.dart';
-import 'package:rinavent/core/theme/app_palette.dart';
+import 'package:rinavent/core/l10n/app_localizations.dart';
+import 'package:rinavent/core/presentation/widgets/custom_elevated_button.dart';
+import 'package:rinavent/core/presentation/widgets/custom_text_form_field.dart';
+import 'package:rinavent/core/theme/theme_helper.dart';
 import 'package:rinavent/core/utils/loader_dialog.dart';
 import 'package:rinavent/core/utils/show_snackbar.dart';
+import 'package:rinavent/core/utils/size_utils.dart';
 import 'package:rinavent/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rinavent/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:rinavent/features/auth/presentation/screens/signup_screen.dart';
-import 'package:rinavent/core/common/widgets/auth_field.dart';
 import 'package:rinavent/features/auth/presentation/screens/splash_screen.dart';
+import 'package:rinavent/features/auth/presentation/validators/input_validators.dart';
 import 'package:rinavent/features/auth/presentation/widgets/custom_button_social.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -38,13 +40,15 @@ class _SigninScreenState extends State<SigninScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var appLocalization = AppLocalizations.of(context);
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppPadding.appPadding),
+              padding: EdgeInsets.only(left: 20.h, top: 24.v),
               child: BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
                   if (state is AuthLoading) {
@@ -66,47 +70,27 @@ class _SigninScreenState extends State<SigninScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: AppPadding.smallSpacer,
-                        ),
+                        SizedBox(height: 24.v),
                         Text(
                           "Sign In",
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
+                        SizedBox(height: 24.v),
                         Text(
                           "Hi Welcome back, you've been missed ",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        AuthField(
-                          hintText: "example@gmail.com",
-                          controller: emailController,
-                          title: 'Email',
+                        SizedBox(height: 24.v),
+                        CustomTextFormField(
                           textInputType: TextInputType.emailAddress,
-                          codeKey: 2,
+                          controller: emailController,
+                          hintText: appLocalization!.lbl_email_address,
+                          hintStyle: theme.textTheme.bodyLarge!,
+                          validator: (value) =>
+                              InputValidators.lastNameValidator(
+                                  value, appLocalization),
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
-                        AuthField(
-                          hintText: "***************",
-                          controller: passwordController,
-                          title: 'Password',
-                          isPassword: true,
-                          textInputType: TextInputType.visiblePassword,
-                          codeKey: 3,
-                        ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
+                        SizedBox(height: 24.v),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -122,35 +106,29 @@ class _SigninScreenState extends State<SigninScreen> {
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                        color: AppPalette.gradient1,
+                                        color: ColorSchemes
+                                            .primaryColorScheme.primary,
                                         decoration: TextDecoration.underline),
                               )),
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: AppPadding.smallSpacer,
-                        ),
-                        CustomButton(
-                            buttonText: "Sign In",
+                        SizedBox(height: 24.v),
+                        CustomElevatedButton(
+                            text: "Reset Password",
                             onPressed: () {
                               if (_signInFormKey.currentState!.validate()) {
-                                context.read<AuthBloc>().add(AuthSignIn(
+                                context.read<AuthBloc>().add(AuthForgotPassword(
                                       email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
                                     ));
                               }
                             }),
-                        const SizedBox(
-                          height: AppPadding.smallSpacer,
-                        ),
+                        SizedBox(height: 24.v),
                         Text(
                           "Or sign up with",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
+                        SizedBox(height: 24.v),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -168,9 +146,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: AppPadding.miniSpacer,
-                        ),
+                        SizedBox(height: 24.v),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(context, SignupSreen.route());
@@ -189,7 +165,8 @@ class _SigninScreenState extends State<SigninScreen> {
                                       .textTheme
                                       .bodySmall
                                       ?.copyWith(
-                                          color: AppPalette.gradient1,
+                                                                                 color: ColorSchemes.primaryColorScheme.primary,
+
                                           decoration: TextDecoration.underline),
                                 )
                               ])),
