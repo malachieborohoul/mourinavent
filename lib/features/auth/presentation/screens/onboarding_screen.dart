@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rinavent/core/common/animations/opacity_tween.dart';
+import 'package:rinavent/core/common/animations/slide_down_tween.dart';
 import 'package:rinavent/core/theme/theme_helper.dart';
 import 'package:rinavent/core/utils/image_constant.dart';
 import 'package:rinavent/core/presentation/widgets/custom_elevated_button.dart';
@@ -114,42 +116,56 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _buildPage(OnboardingPageModel page) {
-    return Stack(
-      children: [
-        SizedBox.expand(
-          child: Image.asset(
-            gaplessPlayback: true,
-            page.imagePath,
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(page.imagePath),
+          fit: BoxFit.cover,
         ),
-        Container(
-          color: Colors.black.withOpacity(0.4),
-        ),
-        SafeArea(
+      ),
+      child: Container(
+        color: Colors.black.withOpacity(0.4),
+        child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  page.title,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.headlineMedium!.copyWith(
-                    color: Colors.white,
-                    height: 1.36,
-                    fontSize: 34.fSize,
+                SlideDownTween(
+                  offset: 80,
+                  delay: 0.6,
+                  child: OpacityTween(
+                    begin: 0.5,
+                    child: Text(
+                      page.title,
+                      textAlign: TextAlign.start,
+                      style: theme.textTheme.headlineMedium!.copyWith(
+                        color: Colors.white,
+                        height: 1.36,
+                        fontSize: 34.fSize,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text(
-                  page.description,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.bodyLarge!.copyWith(
-                    color: Colors.white,
-                    height: 1.50,
-                    fontSize: 17.fSize,
+                SlideDownTween(
+                  offset: 80,
+
+                  child: OpacityTween(
+                    begin: 0.5,
+
+                    child: Text(
+                      
+
+                      page.description,
+                      textAlign: TextAlign.start,
+                      style: theme.textTheme.bodyLarge!.copyWith(
+                        color: Colors.white,
+                        height: 1.50,
+                        fontSize: 17.fSize,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -167,7 +183,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

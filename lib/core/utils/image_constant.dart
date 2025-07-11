@@ -8,15 +8,15 @@ class ImageConstant {
   static String imgLayer1 = '$imagePath/img_layer_1.svg';
 
   // Onboarding One images
-  static String imgRectangle34624256 = '$imagePath/onboarding1.jpg';
+  static String imgRectangle34624256 = '$imagePath/onboarding1.webp';
 
   // Onboarding Two images
   static String imgRectangle34624256474x388 =
-      '$imagePath/onboarding2.jpg';
+      '$imagePath/onboarding2.webp';
 
   // Onboarding Three images
   static String imgRectangle346242561 =
-      '$imagePath/onboarding3.jpg';
+      '$imagePath/onboarding3.webp';
 
   // Login screen filled images
   static String imgCrossedeye11 = '$imagePath/img_crossedeye1_1.svg';
